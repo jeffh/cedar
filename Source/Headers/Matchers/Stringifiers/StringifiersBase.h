@@ -48,4 +48,8 @@ namespace Cedar { namespace Matchers { namespace Stringifiers {
     inline NSString * string_for(const char *value) {
         return string_for((char *)value);
     }
+
+    inline NSString * string_for(const NSRange & range) {
+        return [NSString stringWithFormat:@"NSMakeRange(%lu, %lu)", range.location, range.length];
+    }
 }}}

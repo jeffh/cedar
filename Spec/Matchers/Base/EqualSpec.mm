@@ -50,6 +50,73 @@ NS_ROOT_CLASS
 SPEC_BEGIN(EqualSpec)
 
 describe(@"equal matcher", ^{
+    describe(@"when the actual value is a NSRange type", ^{
+        NSRange actualValue = NSMakeRange(2, 3);
+        describe(@"and the expected value is the same built-in type", ^{
+            __block NSRange expectedValue;
+
+            describe(@"and the values are equal", ^{
+                beforeEach(^{
+                    expectedValue = NSMakeRange(2, 3);
+                });
+
+                describe(@"positive match", ^{
+                    it(@"should pass", ^{
+                        expect(actualValue).to(equal(expectedValue));
+                    });
+                });
+
+                describe(@"negative match", ^{
+                    it(@"should fail with a sensible failure message", ^{
+                        expectFailureWithMessage(@"Expected NSMakeRange(2, 3) to not equal NSMakeRange(2, 3)", ^{
+                            expect(actualValue).to_not(equal(expectedValue));
+                        });
+                    });
+                });
+            });
+
+            describe(@"and the values are not equal by location", ^{
+                beforeEach(^{
+                    expectedValue = NSMakeRange(3, 3);
+                });
+
+                describe(@"positive match", ^{
+                    it(@"should fail with a sensible failure message", ^{
+                        expectFailureWithMessage(@"Expected NSMakeRange(2, 3) to equal NSMakeRange(3, 3)", ^{
+                            expect(actualValue).to(equal(expectedValue));
+                        });
+                    });
+                });
+
+                describe(@"negative match", ^{
+                    it(@"should pass", ^{
+                        expect(actualValue).to_not(equal(expectedValue));
+                    });
+                });
+            });
+
+            describe(@"and the values are not equal by length", ^{
+                beforeEach(^{
+                    expectedValue = NSMakeRange(2, 2);
+                });
+
+                describe(@"positive match", ^{
+                    it(@"should fail with a sensible failure message", ^{
+                        expectFailureWithMessage(@"Expected NSMakeRange(2, 3) to equal NSMakeRange(2, 2)", ^{
+                            expect(actualValue).to(equal(expectedValue));
+                        });
+                    });
+                });
+
+                describe(@"negative match", ^{
+                    it(@"should pass", ^{
+                        expect(actualValue).to_not(equal(expectedValue));
+                    });
+                });
+            });
+        });
+    });
+
     describe(@"when the actual value is a built-in type", ^{
         int actualValue = 1;
 
