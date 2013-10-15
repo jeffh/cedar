@@ -24,6 +24,8 @@
 
 /* Begin PBXBuildFile section */
 		1F4251DE180E0CB200FC578B /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F4251DC180E0CA200FC578B /* SenTestingKit.framework */; };
+		1F882AAA180F9B6300533238 /* ARCBeNilSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1F882AA9180F9B6300533238 /* ARCBeNilSpec.mm */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		1F882AAC180FA8D800533238 /* ARCBeSameInstanceAs.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1F882AAB180FA8D800533238 /* ARCBeSameInstanceAs.mm */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		1F956BCA180E083400E603A9 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96158A87144A915E005895CE /* Cocoa.framework */; };
 		1F956BD0180E083400E603A9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F956BCE180E083400E603A9 /* InfoPlist.strings */; };
 		1F956BD2180E083400E603A9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F956BD1180E083400E603A9 /* main.m */; };
@@ -489,6 +491,8 @@
 
 /* Begin PBXFileReference section */
 		1F4251DC180E0CA200FC578B /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		1F882AA9180F9B6300533238 /* ARCBeNilSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ARCBeNilSpec.mm; sourceTree = "<group>"; };
+		1F882AAB180FA8D800533238 /* ARCBeSameInstanceAs.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ARCBeSameInstanceAs.mm; sourceTree = "<group>"; };
 		1F956B96180E07CE00E603A9 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		1F956B97180E07CE00E603A9 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		1F956B98180E07CE00E603A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -1316,6 +1320,8 @@
 				AEF33012145B6188002F93BB /* BeLessThanSpec.mm */,
 				AEF3301D145B68D7002F93BB /* BeLTESpec.mm */,
 				AEBB92601496C1F000EEBD59 /* RaiseExceptionSpec.mm */,
+				1F882AA9180F9B6300533238 /* ARCBeNilSpec.mm */,
+				1F882AAB180FA8D800533238 /* ARCBeSameInstanceAs.mm */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -1881,6 +1887,7 @@
 				AEF7302513ECC4AE00786282 /* EqualSpec.mm in Sources */,
 				AEF7302713ECC4AE00786282 /* MutableEqualSpec.mm in Sources */,
 				AEF7302C13ECC4E700786282 /* BeEmptySpec.mm in Sources */,
+				1F882AAA180F9B6300533238 /* ARCBeNilSpec.mm in Sources */,
 				AE18A80A13F4640600C8872C /* ContainSpec.mm in Sources */,
 				AE6F3F341458D7C100C98F1E /* BeGreaterThanSpec.mm in Sources */,
 				AEF33009145B4E3B002F93BB /* BeGTESpec.mm in Sources */,
@@ -1897,6 +1904,7 @@
 				AE74903215B45EBA008EA127 /* CDRProtocolFakeSpec.mm in Sources */,
 				AE36AC6215B4BBFB00EB6C51 /* NoOpKeyValueObserver.m in Sources */,
 				96C95B7E161339160018606B /* CDRSymbolicatorSpec.mm in Sources */,
+				1F882AAC180FA8D800533238 /* ARCBeSameInstanceAs.mm in Sources */,
 				9672F0A91615C3F40012ED58 /* CDRSpecSpec.mm in Sources */,
 				E32861321604F287001FA77E /* FibonacciCalculator.m in Sources */,
 				96B5918F1630F5840068EA5E /* ObjCHeadersSpec.mm in Sources */,
