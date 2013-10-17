@@ -8,6 +8,7 @@ UI_SPECS_TARGET_NAME = "iOSSpecs"
 
 OCUNIT_LOGIC_SPECS_TARGET_NAME = "OCUnitAppLogicTests"
 OCUNIT_APPLICATION_SPECS_TARGET_NAME = "OCUnitAppTests"
+XCUNIT_APPLICATION_SPECS_TARGET_NAME = "OCUnitApp + XCTest"
 
 CEDAR_FRAMEWORK_TARGET_NAME = "Cedar"
 CEDAR_IOS_FRAMEWORK_TARGET_NAME = "Cedar-iOS"
@@ -91,8 +92,8 @@ def kill_simulator
   system %Q[killall -m -KILL "iPhone Simulator"]
 end
 
-task :default => [:trim_whitespace, :specs, :focused_specs, :uispecs, "ocunit:logic", "ocunit:application"]
-task :cruise => [:clean, "ocunit:logic", "ocunit:application", :specs, :focused_specs, :uispecs]
+task :default => [:trim_whitespace, :specs, :focused_specs, :uispecs, "ocunit:logic", "ocunit:application", :xcunit]
+task :cruise => [:clean, "ocunit:logic", "ocunit:application", :specs, :focused_specs, :uispecs, :xcunit]
 
 desc "Trim whitespace"
 task :trim_whitespace do
@@ -162,6 +163,17 @@ task :uispecs => :build_uispecs do
   end
 end
 
+desc "Build and run XCUnit specs (#{XCUNIT_APPLICATION_SPECS_TARGET_NAME})"
+task :xcunit do
+  with_env_vars("CEDAR_REPORTER_CLASS" => "CDRColorizedReporter") do
+    if is_run_unit_tests_deprecated? and SDK_VERSION.split('.')[0].to_i >= 7
+      system_or_exit "xcodebuild test -project #{PROJECT_NAME}.xcodeproj -scheme #{XCUNIT_APPLICATION_SPECS_TARGET_NAME.inspect} -configuration #{CONFIGURATION} ARCHS=i386 SYMROOT='#{BUILD_DIR}' -destination 'OS=#{SDK_VERSION},name=iPhone Retina (3.5-inch)'"
+    else
+      puts "Running SDK #{SDK_VERSION}, which predates XCTest. Skipping."
+    end
+  end
+end
+
 desc "Build and run OCUnit logic and application specs"
 task :ocunit => ["ocunit:logic", "ocunit:application"]
 
@@ -182,7 +194,7 @@ namespace :ocunit do
     kill_simulator
 
     if is_run_unit_tests_deprecated?
-      system_or_exit "xcodebuild test -project #{PROJECT_NAME}.xcodeproj -scheme #{APP_IOS_NAME} -configuration #{CONFIGURATION} SYMROOT='#{BUILD_DIR}' -destination 'OS=#{SDK_VERSION},name=iphone'"
+      system_or_exit "xcodebuild test -project #{PROJECT_NAME}.xcodeproj -scheme #{APP_IOS_NAME} -configuration #{CONFIGURATION} ARCHS=i386 SYMROOT='#{BUILD_DIR}' -destination 'OS=#{SDK_VERSION},name=iPhone Retina (3.5-inch)'"
     else
       system_or_exit "xcodebuild -project #{PROJECT_NAME}.xcodeproj -target #{OCUNIT_APPLICATION_SPECS_TARGET_NAME} -configuration #{CONFIGURATION} -sdk iphonesimulator#{SDK_VERSION} build ARCHS=i386 TEST_AFTER_BUILD=NO SYMROOT='#{BUILD_DIR}'", output_file("ocunit_application_specs")
 
