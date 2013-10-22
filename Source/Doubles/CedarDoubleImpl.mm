@@ -6,6 +6,7 @@
 }
 
 @property (nonatomic, retain, readwrite) NSMutableArray *sent_messages;
+@property (nonatomic, retain, readwrite) NSMutableArray *archived_messages;
 @property (nonatomic, assign) NSObject<CedarDouble> *parent_double;
 
 @end
@@ -22,6 +23,7 @@
 - (id)initWithDouble:(NSObject<CedarDouble> *)parent_double {
     if (self = [super init]) {
         self.sent_messages = [NSMutableArray array];
+        self.archived_messages = [NSMutableArray array];
         self.parent_double = parent_double;
     }
     return self;
@@ -30,10 +32,12 @@
 - (void)dealloc {
     self.parent_double = nil;
     self.sent_messages = nil;
+    self.archived_messages = nil;
     [super dealloc];
 }
 
 - (void)reset_sent_messages {
+    [self.archived_messages addObjectsFromArray:self.sent_messages];
     [self.sent_messages removeAllObjects];
 }
 
