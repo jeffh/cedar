@@ -88,7 +88,7 @@
                 Class originalClass = [CDRSpyInfo originalClassForObject:self];
                 Method originalMethod = class_getInstanceMethod(originalClass, invocation.selector);
 
-                if (originalMethod && [invocation selector] == @selector(valueForKey:)) {
+                if (originalMethod && ![@"valueForKey:" isEqual:NSStringFromSelector([invocation selector])]) {
                     [invocation invokeUsingIMP:method_getImplementation(originalMethod)];
                 } else {
                     [self as_original_class:^{
