@@ -21,13 +21,13 @@ int runSpecsWithinUIApplication() {
     return exitStatus;
 }
 
-void exitWithStatusFromUIApplication(int status) {
+void exitWithStatusFromUIApplication(NSInteger status) {
     UIApplication *application = [UIApplication sharedApplication];
     SEL _terminateWithStatusSelector = NSSelectorFromString(@"_terminateWithStatus:");
     if ([application respondsToSelector:_terminateWithStatusSelector]) {
         [application performSelector:_terminateWithStatusSelector withObject:(id)status];
     } else {
-        exit(status);
+        exit((int)status);
     }
 }
 

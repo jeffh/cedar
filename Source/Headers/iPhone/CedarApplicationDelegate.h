@@ -1,7 +1,7 @@
 #import <UIKit/UIKit.h>
 
 int runSpecsWithinUIApplication();
-void exitWithStatusFromUIApplication(int status);
+void exitWithStatusFromUIApplication(NSInteger status);
 
 @class CDRExampleReporterViewController;
 
