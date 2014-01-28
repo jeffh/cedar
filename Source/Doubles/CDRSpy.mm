@@ -5,11 +5,24 @@
 #import "CedarDoubleImpl.h"
 #import "CDRSpyInfo.h"
 
+void CDRSpyClassDealloc(id obj, SEL cmd) {
+    CDRSpyInfo *spyInfo = [CDRSpyInfo spyInfoForObject:obj];
+    if (spyInfo){
+        [CDRSpyInfo clearSpyInfoForObject:obj];
+        [obj dealloc];
+    }
+}
+
 @interface NSInvocation (UndocumentedPrivate)
 - (void)invokeUsingIMP:(IMP)imp;
 @end
 
 @implementation CDRSpy
+
++ (void)initialize {
+    // by-pass the fast that clang requires [super dealloc], when we want [self dealloc]
+    class_addMethod(self, @selector(dealloc), (IMP)CDRSpyClassDealloc, "v@:");
+}
 
 + (void)interceptMessagesForInstance:(id)instance {
     if (!instance) {
@@ -32,48 +45,6 @@
 }
 
 #pragma mark - Emulating the original object
-
-- (id)retain {
-    __block id that = self;
-    [self as_spied_class:^{
-        [that retain];
-    }];
-    return self;
-}
-
-- (oneway void)release {
-    __block id that = self;
-    [self as_spied_class:^{
-        [that release];
-    }];
-}
-
-- (id)autorelease {
-    __block id that = self;
-    [self as_spied_class:^{
-        [that autorelease];
-    }];
-    return self;
-}
-
-- (NSUInteger)retainCount {
-    __block id that = self;
-    __block NSUInteger count;
-    [self as_spied_class:^{
-        count = [that retainCount];
-    }];
-    return count;
-}
-
-- (NSString *)description {
-    __block id that = self;
-    __block NSString *description = nil;
-    [self as_spied_class:^{
-        description = [that description];
-    }];
-
-    return description;
-}
 
 - (Class)class {
     return [CDRSpyInfo publicClassForObject:self];
