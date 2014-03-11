@@ -14,26 +14,18 @@
 #import <objc/runtime.h>
 
 
-static char *testReporterLogKey;
+@interface TestCDROTestReporter : CDROTestReporter
 
-@interface CDROTestReporter (SpecOverrides)
+@property (strong, nonatomic) NSMutableString *reporterOutput;
+
 - (void)logMessage:(NSString *)message;
-- (NSMutableString *)reporter_output;
-- (void)setReporter_output:(NSMutableString *)value;
+
 @end
 
-@implementation CDROTestReporter (SpecOverrides)
+@implementation TestCDROTestReporter
 
 - (void)logMessage:(NSString *)message {
-    [self.reporter_output appendFormat:@"%@\n", message];
-}
-
-- (NSMutableString *)reporter_output {
-    return objc_getAssociatedObject(self, &testReporterLogKey);
-}
-
-- (void)setReporter_output:(NSMutableString *)value {
-    objc_setAssociatedObject(self, &testReporterLogKey, value, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    [self.reporterOutput appendFormat:@"%@\n", message];
 }
 
 @end
@@ -51,7 +43,7 @@ using namespace Cedar::Doubles;
 SPEC_BEGIN(CDROTestReporterSpec)
 
 describe(@"CDROTestReporter", ^{
-    __block CDROTestReporter *reporter;
+    __block TestCDROTestReporter *reporter;
     __block CDRSpec *spec1, *spec2;
     __block CDRExampleGroup *group1, *group2, *focusedGroup;
     __block CDRExample *passingExample, *failingExample, *focusedExample;
@@ -61,15 +53,8 @@ describe(@"CDROTestReporter", ^{
     beforeEach(^{
         bundleName = [NSBundle mainBundle].bundleURL.pathComponents.lastObject;
 
-        // Running as the test suite should not really happen for
-        // this test reporter, but we'll allow it for our test
-        // suite.
-        if ([@[@"Debug", @"Release"] containsObject:bundleName]) {
-            bundleName = @"Cedar.framework";
-        }
-
-        reporter = [[[CDROTestReporter alloc] init] autorelease];
-        reporter.reporter_output = [NSMutableString string];
+        reporter = [[[TestCDROTestReporter alloc] init] autorelease];
+        reporter.reporterOutput = [NSMutableString string];
         dispatcher = [[[CDRReportDispatcher alloc] initWithReporters:@[reporter]] autorelease];
 
         spec1 = [[[CDRSpec alloc] init] autorelease];
@@ -91,7 +76,7 @@ describe(@"CDROTestReporter", ^{
     });
 
     afterEach(^{
-        reporter.reporter_output = nil;
+        reporter.reporterOutput = nil;
     });
 
     describe(@"starting the test run", ^{
@@ -101,15 +86,15 @@ describe(@"CDROTestReporter", ^{
             });
 
             it(@"should report the random seed", ^{
-                reporter.reporter_output should contain(@"Cedar Random Seed: 1337");
+                reporter.reporterOutput should contain(@"Cedar Random Seed: 1337");
             });
 
             it(@"should report that all tests are running", ^{
-                reporter.reporter_output should contain(@"Test Suite 'All tests' started at");
+                reporter.reporterOutput should contain(@"Test Suite 'All tests' started at");
             });
 
             it(@"should report the test bundle suite", ^{
-                reporter.reporter_output should contain([NSString stringWithFormat:@"Test Suite '%@' started at", bundleName]);
+                reporter.reporterOutput should contain([NSString stringWithFormat:@"Test Suite '%@' started at", bundleName]);
             });
         });
 
@@ -128,15 +113,15 @@ describe(@"CDROTestReporter", ^{
             });
 
             it(@"should report the random seed", ^{
-                reporter.reporter_output should contain(@"Cedar Random Seed: 34");
+                reporter.reporterOutput should contain(@"Cedar Random Seed: 34");
             });
 
             it(@"should report that a subset of tests are running", ^{
-                reporter.reporter_output should contain(@"Test Suite 'Multiple Selected Tests' started at");
+                reporter.reporterOutput should contain(@"Test Suite 'Multiple Selected Tests' started at");
             });
 
             it(@"should report the test bundle suite", ^{
-                reporter.reporter_output should contain([NSString stringWithFormat:@"Test Suite '%@' started at", bundleName]);
+                reporter.reporterOutput should contain([NSString stringWithFormat:@"Test Suite '%@' started at", bundleName]);
             });
         });
     });
@@ -145,16 +130,16 @@ describe(@"CDROTestReporter", ^{
         context(@"when not focused", ^{
             beforeEach(^{
                 [dispatcher runWillStartWithGroups:@[group1] andRandomSeed:1337];
-                reporter.reporter_output = [NSMutableString string];
+                reporter.reporterOutput = [NSMutableString string];
                 [dispatcher runDidComplete];
             });
 
             it(@"should report the end of all the tests", ^{
-                reporter.reporter_output should contain(@"Test Suite 'All tests' finished at");
+                reporter.reporterOutput should contain(@"Test Suite 'All tests' finished at");
             });
 
             it(@"should report the test bundle suite stats", ^{
-                reporter.reporter_output should contain([NSString stringWithFormat:@"Test Suite '%@' finished at", bundleName]);
+                reporter.reporterOutput should contain([NSString stringWithFormat:@"Test Suite '%@' finished at", bundleName]);
             });
         });
 
@@ -165,7 +150,7 @@ describe(@"CDROTestReporter", ^{
                 [SpecHelper specHelper].shouldOnlyRunFocused = YES;
 
                 [dispatcher runWillStartWithGroups:@[focusedGroup] andRandomSeed:42];
-                reporter.reporter_output = [NSMutableString string];
+                reporter.reporterOutput = [NSMutableString string];
                 [dispatcher runDidComplete];
             });
 
@@ -174,11 +159,11 @@ describe(@"CDROTestReporter", ^{
             });
 
             it(@"should report the end of all the tests", ^{
-                reporter.reporter_output should contain(@"Test Suite 'Multiple Selected Tests' finished at");
+                reporter.reporterOutput should contain(@"Test Suite 'Multiple Selected Tests' finished at");
             });
 
             it(@"should report the test bundle suite stats", ^{
-                reporter.reporter_output should contain([NSString stringWithFormat:@"Test Suite '%@' finished at", bundleName]);
+                reporter.reporterOutput should contain([NSString stringWithFormat:@"Test Suite '%@' finished at", bundleName]);
             });
 
         });
@@ -190,36 +175,36 @@ describe(@"CDROTestReporter", ^{
             [group1 add:failingExample];
             [spec1.rootGroup add:group1];
             [dispatcher runWillStartWithGroups:@[spec1.rootGroup] andRandomSeed:1337];
-            reporter.reporter_output = [NSMutableString string];
+            reporter.reporterOutput = [NSMutableString string];
 
             [group1 runWithDispatcher:dispatcher];
         });
 
         it(@"should report the spec class", ^{
-            reporter.reporter_output should contain(@"Test Suite 'CDRSpec' started at");
+            reporter.reporterOutput should contain(@"Test Suite 'CDRSpec' started at");
         });
 
         it(@"should report the spec class finishing after the run completes", ^{
             [dispatcher runDidComplete];
 
-            reporter.reporter_output should contain(@"Test Suite 'CDRSpec' finished at");
-            reporter.reporter_output should contain(@"Executed 2 tests, with 1 failure (0 unexpected) in");
+            reporter.reporterOutput should contain(@"Test Suite 'CDRSpec' finished at");
+            reporter.reporterOutput should contain(@"Executed 2 tests, with 1 failure (0 unexpected) in");
         });
 
         it(@"should report the passing example", ^{
-            reporter.reporter_output should contain(@"Test Case '-[CDRSpec my_group_passing]' started.");
+            reporter.reporterOutput should contain(@"Test Case '-[CDRSpec my_group_passing]' started.");
         });
 
         it(@"should finish the passing example", ^{
-            reporter.reporter_output should contain(@"Test Case '-[CDRSpec my_group_passing]' passed (");
+            reporter.reporterOutput should contain(@"Test Case '-[CDRSpec my_group_passing]' passed (");
         });
 
         it(@"should report the passing example", ^{
-            reporter.reporter_output should contain(@"Test Case '-[CDRSpec my_group_failing]' started.");
+            reporter.reporterOutput should contain(@"Test Case '-[CDRSpec my_group_failing]' started.");
         });
 
         it(@"should finish the passing example", ^{
-            reporter.reporter_output should contain(@"Test Case '-[CDRSpec my_group_failing]' failed (");
+            reporter.reporterOutput should contain(@"Test Case '-[CDRSpec my_group_failing]' failed (");
         });
     });
 
@@ -241,47 +226,47 @@ describe(@"CDROTestReporter", ^{
             [spec2.rootGroup add:group2];
 
             [dispatcher runWillStartWithGroups:@[spec1.rootGroup, spec2.rootGroup] andRandomSeed:1337];
-            reporter.reporter_output = [NSMutableString string];
+            reporter.reporterOutput = [NSMutableString string];
 
             [group1 runWithDispatcher:dispatcher];
             [group2 runWithDispatcher:dispatcher];
         });
 
         it(@"should report the spec class", ^{
-            reporter.reporter_output should contain(@"Test Suite 'CDRSpec' started at");
+            reporter.reporterOutput should contain(@"Test Suite 'CDRSpec' started at");
         });
 
         it(@"should report the passing example", ^{
-            reporter.reporter_output should contain(@"Test Case '-[CDRSpec my_group_passing]' started.");
+            reporter.reporterOutput should contain(@"Test Case '-[CDRSpec my_group_passing]' started.");
         });
 
         it(@"should finish the passing example", ^{
-            reporter.reporter_output should contain(@"Test Case '-[CDRSpec my_group_passing]' passed");
+            reporter.reporterOutput should contain(@"Test Case '-[CDRSpec my_group_passing]' passed");
         });
 
         it(@"should report the spec class finishing after the run completes", ^{
             [dispatcher runDidComplete];
 
-            reporter.reporter_output should contain(@"Test Suite 'CDRSpec' finished at");
+            reporter.reporterOutput should contain(@"Test Suite 'CDRSpec' finished at");
 
-            NSRange range = [reporter.reporter_output rangeOfString:@"Test Suite 'CDRSpec' finished at"];
-            [reporter.reporter_output substringFromIndex:range.location] should contain(@"Executed 3 tests, with 1 failure (0 unexpected) in");
+            NSRange range = [reporter.reporterOutput rangeOfString:@"Test Suite 'CDRSpec' finished at"];
+            [reporter.reporterOutput substringFromIndex:range.location] should contain(@"Executed 3 tests, with 1 failure (0 unexpected) in");
         });
 
         it(@"should report the failing example", ^{
-            reporter.reporter_output should contain(@"Test Case '-[MyExampleSpec my_group_other_failing]' started.");
+            reporter.reporterOutput should contain(@"Test Case '-[MyExampleSpec my_group_other_failing]' started.");
         });
 
         it(@"should report the failing example's error", ^{
-            reporter.reporter_output should contain(@": error: -[MyExampleSpec my_group_other_failing] :");
+            reporter.reporterOutput should contain(@": error: -[MyExampleSpec my_group_other_failing] :");
         });
 
         it(@"should finish the failing example", ^{
-            reporter.reporter_output should contain(@"Test Case '-[MyExampleSpec my_group_other_failing]' failed");
+            reporter.reporterOutput should contain(@"Test Case '-[MyExampleSpec my_group_other_failing]' failed");
         });
 
         it(@"should not report the pending example", ^{
-            reporter.reporter_output should_not contain(@"Test Case '-[MyExampleSpec my_group_other_pending]'");
+            reporter.reporterOutput should_not contain(@"Test Case '-[MyExampleSpec my_group_other_pending]'");
         });
     });
 });
