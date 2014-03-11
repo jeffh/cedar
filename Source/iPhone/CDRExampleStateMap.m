@@ -2,16 +2,6 @@
 
 static CDRExampleStateMap *sharedInstance__;
 
-const CDRExampleState exampleStateKeys[] = {
-    CDRExampleStateIncomplete,
-    CDRExampleStatePassed,
-    CDRExampleStatePending,
-    CDRExampleStateSkipped,
-    CDRExampleStateFailed,
-    CDRExampleStateError
-};
-const NSString *exampleStateDescriptions[] = {@"RUNNING", @"PASSED", @"PENDING", @"SKIPPED", @"FAILED", @"ERROR"};
-
 @implementation CDRExampleStateMap
 
 + (id)stateMap {
@@ -23,16 +13,25 @@ const NSString *exampleStateDescriptions[] = {@"RUNNING", @"PASSED", @"PENDING",
 
 - (id)init {
     if (self = [super init]) {
-        const size_t keyCount = sizeof(exampleStateKeys)/sizeof(exampleStateKeys[0]);
-        const size_t valueCount = sizeof(exampleStateDescriptions)/sizeof(exampleStateDescriptions[0]);
-        assert(keyCount == valueCount);
-        stateMap_ = CFDictionaryCreate(kCFAllocatorDefault, (const void **)exampleStateKeys, (const void **)exampleStateDescriptions, keyCount, NULL, &kCFTypeDictionaryValueCallBacks);
+        stateMap_ = [[NSDictionary alloc] initWithObjectsAndKeys:
+                     @"RUNNING", [NSNumber numberWithInteger:CDRExampleStateIncomplete],
+                     @"PASSED", [NSNumber numberWithInteger:CDRExampleStatePassed],
+                     @"PENDING", [NSNumber numberWithInteger:CDRExampleStatePending],
+                     @"SKIPPED", [NSNumber numberWithInteger:CDRExampleStateSkipped],
+                     @"FAILED", [NSNumber numberWithInteger:CDRExampleStateFailed],
+                     @"ERROR", [NSNumber numberWithInteger:CDRExampleStateError],
+                     nil];
     }
     return self;
 }
 
+- (void)dealloc {
+    [stateMap_ release];
+    [super dealloc];
+}
+
 - (NSString *)descriptionForState:(CDRExampleState)state {
-    return (NSString *)CFDictionaryGetValue (stateMap_, (const void **)state);
+    return [stateMap_ objectForKey:[NSNumber numberWithInteger:state]];
 }
 
 

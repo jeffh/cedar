@@ -2,7 +2,7 @@
 #import "CDRExampleBase.h"
 
 @interface CDRExampleStateMap : NSObject {
-    CFDictionaryRef stateMap_;
+    NSDictionary *stateMap_;
 }
 
 + (id)stateMap;
