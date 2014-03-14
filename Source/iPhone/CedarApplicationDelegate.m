@@ -24,7 +24,13 @@ int runSpecsWithinUIApplication() {
 }
 
 void exitWithStatusFromUIApplication(int status) {
-    exit(status);
+    UIApplication *application = [UIApplication sharedApplication];
+    SEL _terminateWithStatusSelector = NSSelectorFromString(@"_terminateWithStatus:");
+    if ([application respondsToSelector:_terminateWithStatusSelector]) {
+        [application performSelector:_terminateWithStatusSelector withObject:(id)(intptr_t)status];
+    } else {
+        exit(status);
+    }
 }
 
 @implementation CedarApplication
