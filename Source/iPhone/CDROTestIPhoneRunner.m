@@ -76,8 +76,7 @@ void CDRRunTests(id self, SEL _cmd, id ignored) {
     } else {
         NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 
-        const char* argv[] = { "executable", "-RegisterForSystemEvents" };
-        exitStatus |= UIApplicationMain(2, (char **)argv, @"CedarApplication", nil);
+        exitStatus |= runSpecsWithinUIApplication();
 
         [pool release];
         exit(exitStatus);
