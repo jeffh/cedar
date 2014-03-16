@@ -19,7 +19,7 @@ XCODE_TEMPLATES_DIR = "#{ENV['HOME']}/Library/Developer/Xcode/Templates"
 XCODE_SNIPPETS_DIR = "#{ENV['HOME']}/Library/Developer/Xcode/UserData/CodeSnippets"
 APPCODE_SNIPPETS_DIR = "#{ENV['HOME']}/Library/Preferences/appCode20/templates"
 
-SDK_VERSION = ENV["CEDAR_SDK_VERSION"] || "7.0"
+SDK_VERSION = ENV["CEDAR_SDK_VERSION"] || "7.1"
 SDK_RUNTIME_VERSION = ENV["CEDAR_SDK_RUNTIME_VERSION"] || SDK_VERSION
 
 PROJECT_ROOT = File.dirname(__FILE__)
@@ -51,7 +51,7 @@ def system_or_exit(cmd, stdout = nil)
   puts "Executing #{cmd}"
   cmd += " >#{stdout}" if stdout
   system(cmd) or begin
-    output = `cat #{stdout}`
+    output = stdout ? `cat #{stdout}` : ""
     raise <<EOF
 ******** Build failed ********
 #{output}
@@ -93,6 +93,20 @@ def kill_simulator
   system %Q[killall -m -KILL "gdb"]
   system %Q[killall -m -KILL "otest"]
   system %Q[killall -m -KILL "iPhone Simulator"]
+end
+
+def run_simulated_app(app)
+  kill_simulator
+  system "which ios-sim" or begin
+    puts <<EOF
+
+======== BUILD FAILED ========
+I need ios-sim; Please brew install ios-sim
+
+EOF
+    exit(1)
+  end
+  system_or_exit "ios-sim launch #{app} --tall --retina --sdk #{SDK_RUNTIME_VERSION} | tee /dev/fd/2 | grep ', 0 failure'"
 end
 
 task :default => [:trim_whitespace, :specs, :focused_specs, :uispecs, :iosframeworkspecs, "ocunit:logic", "ocunit:application", :xcunit]
@@ -157,33 +171,25 @@ require 'tmpdir'
 
 desc "Run UI specs"
 task :uispecs => :build_uispecs do
-  sdk_path = sdk_dir(SDK_RUNTIME_VERSION)
   env_vars = {
-    "DYLD_ROOT_PATH" => sdk_path,
-    "IPHONE_SIMULATOR_ROOT" => sdk_path,
-    "CFFIXED_USER_HOME" => Dir.tmpdir,
     "CEDAR_HEADLESS_SPECS" => "1",
     "CEDAR_REPORTER_CLASS" => "CDRColorizedReporter",
   }
 
   with_env_vars(env_vars) do
-    system_or_exit "#{File.join(build_dir("-iphonesimulator"), "#{UI_SPECS_TARGET_NAME}.app", UI_SPECS_TARGET_NAME)} -RegisterForSystemEvents"
+    run_simulated_app File.join(build_dir("-iphonesimulator"), "#{UI_SPECS_TARGET_NAME}.app")
   end
 end
 
 desc "Run iOS static framework specs"
 task :iosframeworkspecs => :build_iosframeworkspecs do
-  sdk_path = sdk_dir(SDK_RUNTIME_VERSION)
   env_vars = {
-    "DYLD_ROOT_PATH" => sdk_path,
-    "IPHONE_SIMULATOR_ROOT" => sdk_path,
-    "CFFIXED_USER_HOME" => Dir.tmpdir,
     "CEDAR_HEADLESS_SPECS" => "1",
     "CEDAR_REPORTER_CLASS" => "CDRColorizedReporter",
   }
 
   with_env_vars(env_vars) do
-    system_or_exit "#{File.join(build_dir("-iphonesimulator"), "#{IOS_FRAMEWORK_SPECS_TARGET_NAME}.app", IOS_FRAMEWORK_SPECS_TARGET_NAME)} -RegisterForSystemEvents"
+    run_simulated_app File.join(build_dir("-iphonesimulator"), "#{IOS_FRAMEWORK_SPECS_TARGET_NAME}.app")
   end
 end
 
@@ -221,18 +227,9 @@ namespace :ocunit do
       system_or_exit "xcodebuild test -project #{PROJECT_NAME}.xcodeproj -scheme #{APP_IOS_NAME} -configuration #{CONFIGURATION} ARCHS=i386 SYMROOT='#{BUILD_DIR}' -destination 'OS=#{SDK_VERSION},name=iPhone Retina (3.5-inch)'"
     else
       system_or_exit "xcodebuild -project #{PROJECT_NAME}.xcodeproj -target #{OCUNIT_APPLICATION_SPECS_TARGET_NAME} -configuration #{CONFIGURATION} -sdk iphonesimulator#{SDK_VERSION} build ARCHS=i386 TEST_AFTER_BUILD=NO SYMROOT='#{BUILD_DIR}'", output_file("ocunit_application_specs")
-
-      sdk_path = sdk_dir(SDK_RUNTIME_VERSION)
       env_vars = {
-        "DYLD_ROOT_PATH" => sdk_path,
-        "DYLD_INSERT_LIBRARIES" => "#{xcode_developer_dir}/Library/PrivateFrameworks/IDEBundleInjection.framework/IDEBundleInjection",
-        "DYLD_FALLBACK_LIBRARY_PATH" => sdk_path,
-        "XCInjectBundle" => "#{File.join(build_dir("-iphonesimulator"), "#{OCUNIT_APPLICATION_SPECS_TARGET_NAME}.octest")}",
-        "XCInjectBundleInto" => "#{File.join(build_dir("-iphonesimulator"), "#{APP_IOS_NAME}.app/#{APP_IOS_NAME}")}",
-        "IPHONE_SIMULATOR_ROOT" => sdk_path,
-          "CFFIXED_USER_HOME" => Dir.tmpdir,
-          "CEDAR_HEADLESS_SPECS" => "1",
-          "CEDAR_REPORTER_CLASS" => "CDRColorizedReporter",
+        "CEDAR_HEADLESS_SPECS" => "1",
+        "CEDAR_REPORTER_CLASS" => "CDRColorizedReporter",
       }
 
       with_env_vars(env_vars) do

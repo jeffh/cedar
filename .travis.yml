@@ -15,4 +15,7 @@ env:
     - CEDAR_SDK_RUNTIME_VERSION="6.1"
     - CEDAR_SDK_RUNTIME_VERSION="7.0"
 
+before_install:
+  - brew install ios-sim
+
 script: rake
