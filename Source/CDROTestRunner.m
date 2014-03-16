@@ -33,6 +33,7 @@ void CDRRunTests(id self, SEL _cmd, id ignored) {
 
 + (void)load {
     CDRHijackOCUnitRun((IMP)CDRRunTests);
+    CDRHijackXCUnitRun((IMP)CDRRunTests);
 }
 
 @end
