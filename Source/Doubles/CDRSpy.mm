@@ -9,6 +9,23 @@
 - (void)invokeUsingIMP:(IMP)imp;
 @end
 
+
+///////////////////////////////////////////
+// This class exists only to clean up spies
+// if they are naturally dealloc-ed while
+// being spied upon
+@interface CDRSpyTrap : NSObject
+@property (assign, nonatomic) id spy;
+@end
+
+@implementation CDRSpyTrap
+- (void)dealloc {
+    [CDRSpy stopInterceptingMessagesForInstance:self.spy];
+    [super dealloc];
+}
+@end
+///////////////////////////////////////////
+
 @implementation CDRSpy
 
 + (void)interceptMessagesForInstance:(id)instance {
@@ -18,6 +35,10 @@
     if (![object_getClass(instance) conformsToProtocol:@protocol(CedarDouble)]) {
         [CDRSpyInfo storeSpyInfoForObject:instance];
         object_setClass(instance, self);
+        CDRSpyTrap *trap = [[CDRSpyTrap alloc] init];
+        trap.spy = instance;
+        objc_setAssociatedObject(instance, @selector(interceptMessagesForInstance:), trap, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        [trap release];
     }
 }
 
