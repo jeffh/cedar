@@ -83,14 +83,14 @@
 		342F5D0B18F430DB00F38E35 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 342F5D0A18F430DB00F38E35 /* QuartzCore.framework */; };
 		343FAFEA190FDAEC0085AFEC /* DeallocNotifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 343FAFE9190FDAEC0085AFEC /* DeallocNotifier.m */; };
 		343FAFEB190FDAEC0085AFEC /* DeallocNotifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 343FAFE9190FDAEC0085AFEC /* DeallocNotifier.m */; };
+		34446021190A7EFD0076655A /* SpecHelper.h in Copy headers to framework */ = {isa = PBXBuildFile; fileRef = 34446020190A7EB00076655A /* SpecHelper.h */; };
+		34446022190A7F0D0076655A /* SpecHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 34446020190A7EB00076655A /* SpecHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		34681C2C18FE451E009D38AC /* CDRTypeUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 34681C2B18FE451E009D38AC /* CDRTypeUtilities.m */; };
 		34681C2E18FE4884009D38AC /* CDRTypeUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 34681C2B18FE451E009D38AC /* CDRTypeUtilities.m */; };
 		34681C3018FE4B68009D38AC /* CDRTypeUtilitiesSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = 34681C2F18FE4B68009D38AC /* CDRTypeUtilitiesSpec.mm */; };
 		34681C3118FE4B68009D38AC /* CDRTypeUtilitiesSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = 34681C2F18FE4B68009D38AC /* CDRTypeUtilitiesSpec.mm */; };
 		34832FDA1908C996008A52DE /* CDROTestRunner.m in Sources */ = {isa = PBXBuildFile; fileRef = 96EA1CA7142C6425001A78E0 /* CDROTestRunner.m */; };
 		34832FDB1908C9E3008A52DE /* CDROTestRunner.h in Headers */ = {isa = PBXBuildFile; fileRef = 96EA1CAD142C6449001A78E0 /* CDROTestRunner.h */; };
-		34446021190A7EFD0076655A /* SpecHelper.h in Copy headers to framework */ = {isa = PBXBuildFile; fileRef = 34446020190A7EB00076655A /* SpecHelper.h */; };
-		34446022190A7F0D0076655A /* SpecHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 34446020190A7EB00076655A /* SpecHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		34ADD2E01921F18100B057AC /* AnyInstanceOfClassArgument.mm in Sources */ = {isa = PBXBuildFile; fileRef = 34ADD2DE1921F18100B057AC /* AnyInstanceOfClassArgument.mm */; };
 		34ADD2E11921F18100B057AC /* AnyInstanceOfClassArgument.mm in Sources */ = {isa = PBXBuildFile; fileRef = 34ADD2DE1921F18100B057AC /* AnyInstanceOfClassArgument.mm */; };
 		34ADD2E71921F33800B057AC /* AnyInstanceConformingToProtocolArgument.mm in Sources */ = {isa = PBXBuildFile; fileRef = 34ADD2E51921F33800B057AC /* AnyInstanceConformingToProtocolArgument.mm */; };
@@ -652,9 +652,9 @@
 		22FB7B4016ACBA5900012D69 /* HeadlessSimulatorWorkaround.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeadlessSimulatorWorkaround.h; sourceTree = "<group>"; };
 		22FB7B4316ACBB3A00012D69 /* HeadlessSimulatorWorkaround.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeadlessSimulatorWorkaround.m; sourceTree = "<group>"; };
 		342F5D0A18F430DB00F38E35 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
-		34446020190A7EB00076655A /* SpecHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpecHelper.h; sourceTree = "<group>"; };
 		343FAFE8190FDAEC0085AFEC /* DeallocNotifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeallocNotifier.h; sourceTree = "<group>"; };
 		343FAFE9190FDAEC0085AFEC /* DeallocNotifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeallocNotifier.m; sourceTree = "<group>"; };
+		34446020190A7EB00076655A /* SpecHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpecHelper.h; sourceTree = "<group>"; };
 		3460488818F26F5400BC93B6 /* NSMethodSignature+Cedar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMethodSignature+Cedar.h"; sourceTree = "<group>"; };
 		3460489318F2DBBF00BC93B6 /* CDRBlockHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CDRBlockHelper.h; sourceTree = "<group>"; };
 		34681C2B18FE451E009D38AC /* CDRTypeUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDRTypeUtilities.m; sourceTree = "<group>"; };
@@ -1499,7 +1499,6 @@
 				AE8C879F1362068A006C9305 /* Matchers */,
 				66F00B5014C4D92500146D88 /* Doubles */,
 				9672F0A81615C3F40012ED58 /* CDRSpecSpec.mm */,
-				AEEE1FE811DC27B800029872 /* CDRExampleGroupSpec.mm */,
 				AEEE1FE911DC27B800029872 /* CDRExampleSpec.mm */,
 				AEEE1FE811DC27B800029872 /* CDRExampleGroupSpec.mm */,
 				96C95B7D161339160018606B /* CDRSymbolicatorSpec.mm */,
@@ -1799,7 +1798,7 @@
 			name = XCUnitAppTests;
 			productName = OCUnitAppTests;
 			productReference = 1F45A3DD180E4796003C1E36 /* XCUnitAppTests.xctest */;
-			productType = "com.apple.product-type.bundle";
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		96158A85144A915E005895CE /* OCUnitAppLogicTests */ = {
 			isa = PBXNativeTarget;
@@ -1818,7 +1817,7 @@
 			name = OCUnitAppLogicTests;
 			productName = OCUnitAppLogicTests;
 			productReference = 96158A86144A915E005895CE /* OCUnitAppLogicTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productType = "com.apple.product-type.bundle.ocunit-test";
 		};
 		96A07EEE13F276640021974D /* FocusedSpecs */ = {
 			isa = PBXNativeTarget;
@@ -1872,7 +1871,7 @@
 			name = OCUnitAppTests;
 			productName = OCUnitAppTests;
 			productReference = 96B5FA11144A81A8000A6A5D /* OCUnitAppTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productType = "com.apple.product-type.bundle.ocunit-test";
 		};
 		AE02E7E3184EABCD00414F19 /* iOSFrameworkSpecs */ = {
 			isa = PBXNativeTarget;
@@ -2103,7 +2102,7 @@
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /usr/bin/ruby;
+			shellPath = "/usr/bin/env ruby";
 			shellScript = "key = \"CDRBuildVersionSHA\"\nver = `git rev-parse HEAD`.strip\nputs \"Git commit SHA is #{ver}\"\npath = \"#{ENV['BUILT_PRODUCTS_DIR']}/#{ENV['INFOPLIST_PATH']}\"\nputs \"Updating #{path}\"\n`/usr/libexec/PlistBuddy -c \"Add :#{key} string #{ver}\" \"#{path}\"`";
 		};
 		96158A84144A915E005895CE /* ShellScript */ = {
