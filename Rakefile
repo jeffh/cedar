@@ -79,11 +79,11 @@ EOF
   end
 
   def self.fold_start(name)
-    puts "travis_fold start #{name}" if ENV['TRAVIS']
+    puts "travis_fold:start:#{name}" if ENV['TRAVIS']
   end
 
   def self.fold_end(name)
-    puts "travis_fold end #{name}" if ENV['TRAVIS']
+    puts "travis_fold:end:#{name}" if ENV['TRAVIS']
   end
 
   def self.fold(name)
@@ -142,7 +142,7 @@ class Xcode
     args += " -sdk #{options[:sdk].inspect}" if options[:sdk]
     args += " -scheme #{options[:scheme].inspect}" if options[:scheme]
 
-    Shell.fold "Build #{options[:scheme] || options[:target]}" do
+    Shell.fold "build" do
       Shell.run(%Q[xcodebuild -project #{PROJECT_NAME}.xcodeproj -configuration #{CONFIGURATION} SYMROOT='#{BUILD_DIR}' build #{args}], logfile)
     end
   end
@@ -156,7 +156,7 @@ class Xcode
     args += " -sdk #{options[:sdk].inspect}" if options[:sdk]
     args += " -scheme #{options[:scheme].inspect}" if options[:scheme]
 
-    Shell.fold "Analyze #{options[:scheme] || options[:target]}" do
+    Shell.fold "analyze" do
       Shell.run(%Q[xcodebuild -project #{PROJECT_NAME}.xcodeproj -configuration #{CONFIGURATION} analyze #{args} SYMROOT='#{BUILD_DIR}' | tee /dev/stderr | grep -q -v 'The following commands produced analyzer issues:'], logfile)
     end
   end
@@ -213,7 +213,7 @@ class Simulator
   end
 
   def self.kill
-    Shell.fold "Kill Simulator" do
+    Shell.fold "kill-simulator" do
       system %Q[killall -m -KILL "gdb"]
       system %Q[killall -m -KILL "otest"]
       system %Q[killall -m -KILL "iPhone Simulator"]
@@ -380,7 +380,7 @@ namespace :testbundles do
   task :xcunit do
     Simulator.kill
 
-    Shell.fold "Running xcunit bundle #{XCUNIT_APPLICATION_SPECS_TARGET_NAME}" do
+    Shell.fold "run-xcunit" do
       Shell.with_env("CEDAR_REPORTER_CLASS" => "CDRColorizedReporter") do
         if Xcode.is_octest_deprecated? and SDK_VERSION.split('.')[0].to_i >= 7
           Shell.run "xcodebuild test -project #{PROJECT_NAME}.xcodeproj -scheme #{XCUNIT_APPLICATION_SPECS_TARGET_NAME.inspect} -configuration #{CONFIGURATION} ARCHS=i386 SYMROOT='#{BUILD_DIR}' -destination '#{Xcode.destination_for_ios_sdk(SDK_VERSION)}' -destination-timeout 9", "xcunit.run.log"
@@ -397,7 +397,7 @@ namespace :testbundles do
   namespace :ocunit do
     desc "Build and run OCUnit logic specs (#{OCUNIT_LOGIC_SPECS_TARGET_NAME})"
     task :logic do
-      Shell.fold "Running ocunit logic bundle #{OCUNIT_LOGIC_SPECS_TARGET_NAME}" do
+      Shell.fold "running-ocunit-logic" do
         Shell.with_env("CEDAR_REPORTER_CLASS" => "CDRColorizedReporter") do
           if Xcode.is_octest_deprecated?
             Shell.run "xcodebuild test -project #{PROJECT_NAME}.xcodeproj -scheme #{APP_NAME} -configuration #{CONFIGURATION} SYMROOT='#{BUILD_DIR}' -destination 'arch=x86_64'", "ocunit-logic-specs.log"
@@ -412,7 +412,7 @@ namespace :testbundles do
     task :application do
       Simulator.kill
 
-      Shell.fold "Running ocunit application bundle #{OCUNIT_LOGIC_SPECS_TARGET_NAME}" do
+      Shell.fold "running-ocunit-application" do
         if Xcode.is_octest_deprecated?
           Shell.with_env("CEDAR_REPORTER_CLASS" => "CDRColorizedReporter") do
             Shell.run "xcodebuild test -project #{PROJECT_NAME}.xcodeproj -scheme #{APP_IOS_NAME} -configuration #{CONFIGURATION} ARCHS=i386 SYMROOT='#{BUILD_DIR}' -destination '#{Xcode.destination_for_ios_sdk(SDK_VERSION)}' -destination-timeout 9", "ocunit-application-specs.log"
