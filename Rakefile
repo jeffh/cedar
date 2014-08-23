@@ -134,7 +134,7 @@ class Xcode
     args += " -sdk #{options[:sdk].inspect}" if options[:sdk]
     args += " -scheme #{options[:scheme].inspect}" if options[:scheme]
 
-    Shell.fold "build" do
+    Shell.fold "build.#{options[:scheme] || options[:target]}" do
       Shell.run(%Q(xcodebuild -project #{PROJECT_NAME}.xcodeproj -configuration #{CONFIGURATION} SYMROOT='#{BUILD_DIR}' build #{args}), logfile)
     end
   end
