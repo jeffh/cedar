@@ -24,4 +24,8 @@ install:
   - bundle install
   - brew install ios-sim
 
-script: rake $TASK
+script:
+    # run a printer task to keep travis from terminating static analysis
+    - 'while true; do echo "(waiting)"; sleep 60; done &'
+    - rake $TASK
+    - kill %1
