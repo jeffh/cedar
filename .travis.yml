@@ -8,8 +8,8 @@ rvm:
 env:
   matrix:
     - CEDAR_SDK_RUNTIME_VERSION="6.1" TASK="clean testbundles:run suites:run suites:iosframeworkspecs"
-    - CEDAR_SDK_RUNTIME_VERSION="7.0" TASK="clean testbundles:run suites:run suites:iosframeworkspaces"
-    - CEDAR_SDK_RUNTIME_VERSION="7.1" TASK="clean testbundles:run suites:run suites:iosframeworkspaces"
+    - CEDAR_SDK_RUNTIME_VERSION="7.0" TASK="clean testbundles:run suites:run suites:iosframeworkspacs"
+    - CEDAR_SDK_RUNTIME_VERSION="7.1" TASK="clean testbundles:run suites:run suites:iosframeworkspacs"
     - CEDAR_SDK_RUNTIME_VERSION="6.1" TASK="clean suites:analyze"
     - CEDAR_SDK_RUNTIME_VERSION="7.0" TASK="clean suites:analyze"
     - CEDAR_SDK_RUNTIME_VERSION="7.1" TASK="clean suites:analyze"
