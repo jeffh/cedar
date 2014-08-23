@@ -164,7 +164,9 @@ class Xcode
     args += " -scheme #{options[:scheme].inspect}" if options[:scheme]
 
     Shell.fold "analyze.#{options[:scheme] || options[:target]}" do
-      Shell.run(%Q[xcodebuild -project #{PROJECT_NAME}.xcodeproj -configuration #{CONFIGURATION} analyze #{args} SYMROOT='#{BUILD_DIR}'], logfile)
+      travis_wait = ""
+      travis_wait = "travis_wait " if ENV['TRAVIS']
+      Shell.run(%Q[#{travis_wait}xcodebuild -project #{PROJECT_NAME}.xcodeproj -configuration #{CONFIGURATION} analyze #{args} SYMROOT='#{BUILD_DIR}'], logfile)
     end
   end
 
@@ -231,8 +233,15 @@ class Simulator
   end
 end
 
+desc 'Trims whitespace and runs all the tests (suites and bundles)'
 task :default => [:trim_whitespace, "suites:run", "suites:iosframeworkspecs:run", "testbundles:run"]
-task :cruise => [:clean, "testbundles:run", :suites, "suites:iosframeworkspecs"]
+
+desc 'Runs static analyzer on suites and the ios framework'
+task :analyze => [:clean, "suites:analyze", "suites:iosframeworkspecs:analyze"]
+
+desc 'Cleans, trims whitespace, runs all tests and static analyzer'
+task :full => [:clean, :default, :analyze]
+task :ci => [:clean, "testbundles:run", "suites:run", "suites:iosframeworkspecs:run"]
 
 desc "Trim whitespace"
 task :trim_whitespace do
@@ -331,7 +340,7 @@ namespace :suites do
   end
 
   desc "Analyzes and runs ios framework specs"
-  task iosframeworkspecs: ['specs:analyze', 'specs:run']
+  task iosframeworkspecs: ['iosframeworkspecs:analyze', 'iosframeworkspecs:run']
 
   namespace :iosframeworkspecs do
     desc "Analyzes ios framework specs"
