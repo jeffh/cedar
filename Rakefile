@@ -494,15 +494,17 @@ namespace :testbundles do
   end
 end
 
-desc 'Runs integration tests of the templates'
-task :test_templates do
+task :enable_accessibility do
   puts "Require sudo access to enable accessibility for AppleScript tests."
   Accessibility.enable
   Accessibility.add_allow_accessibility_control('/usr/sbin/sshd')
   Accessibility.add_allow_accessibility_control('/usr/libexec/sshd-keygen-wrapper')
-  # Shell.run "cucumber"
-  path = File.absolute_path 'features/support/scripts/osx_add_spec_bundle.applescript'
-  Shell.run "ssh localhost 'osascript #{path}'"
+end
+
+desc 'Runs integration tests of the templates'
+task :test_templates do
+  puts "Require sudo access to enable accessibility for AppleScript tests."
+  Shell.run "cucumber"
 end
 
 desc "Remove code snippets and templates"
