@@ -205,7 +205,6 @@ class Simulator
       # "DYLD_FALLBACK_LIBRARY_PATH" => sdk_path,
       # "IPHONE_SIMULATOR_ROOT" => sdk_path,
       # "CFFIXED_USER_HOME" => Dir.tmpdir,
-      "CEDAR_HEADLESS_SPECS" => "1",
       "CEDAR_REPORTER_CLASS" => "CDRColorizedReporter",
     }
 
@@ -301,7 +300,6 @@ namespace :suites do
     task run: :build do
       Simulator.kill
       env_vars = {
-        "CEDAR_HEADLESS_SPECS" => "1",
         "CEDAR_REPORTER_CLASS" => "CDRColorizedReporter",
       }
 
@@ -357,7 +355,6 @@ namespace :suites do
     task run: :build do
       Simulator.kill
       env_vars = {
-        "CEDAR_HEADLESS_SPECS" => "1",
         "CEDAR_REPORTER_CLASS" => "CDRColorizedReporter",
       }
 
