@@ -187,12 +187,22 @@ void fail(NSString *reason) {
     [super dealloc];
 }
 
-- (void)defineBehaviors {
+- (void)commonInit {
     self.rootGroup = [[[CDRExampleGroup alloc] initWithText:[[self class] description] isRoot:YES] autorelease];
     self.rootGroup.parent = [CDRSpecHelper specHelper];
     self.currentGroup = self.rootGroup;
     self.symbolicator = [[[CDRSymbolicator alloc] init] autorelease];
+}
 
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        [self commonInit];
+    }
+    return self;
+}
+
+- (void)defineBehaviors {
     CDR_currentSpec = self;
     [self declareBehaviors];
     CDR_currentSpec = nil;
@@ -290,10 +300,17 @@ void fail(NSString *reason) {
 
 @end
 
-extern NSArray *CDRPermuteSpecClassesWithSeed(NSArray *unsortedSpecClasses, unsigned int seed);
-unsigned int CDRGetRandomSeed();
-const char *CDRSpecDefinedBehaviorsKey;
 @implementation CDRSpec (XCTestSupport)
+
+- (instancetype)initWithInvocation:(NSInvocation *)invocation {
+    Class parentClass = class_getSuperclass([self class]);
+    IMP constructor = class_getMethodImplementation(parentClass, @selector(initWithInvocation:));
+    self = ((id (*)(id instance, SEL cmd, NSInvocation *))constructor)(self, _cmd, invocation);
+    if (self) {
+        [self commonInit];
+    }
+    return self;
+}
 
 - (NSString *)name {
     return [NSString stringWithFormat:@"-[%@ %@]",
@@ -310,6 +327,8 @@ const char *CDRSpecDefinedBehaviorsKey;
 }
 
 - (void)invokeTest {
+     [self defineBehaviors];
+
     NSInvocation *invocation = [self invocation];
     invocation.target = self;
     [invocation invoke];
