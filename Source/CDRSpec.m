@@ -131,23 +131,53 @@ void fail(NSString *reason) {
 
 @implementation CDRSpec
 
-@synthesize
-    currentGroup = currentGroup_,
-    rootGroup = rootGroup_,
-    fileName = fileName_,
-    symbolicator = symbolicator_;
+- (CDRExampleGroup *)currentGroup {
+    Ivar ivar = object_getInstanceVariable(self, "currentGroup_", NULL);
+    return object_getIvar(self, ivar);
+}
+
+- (void)setCurrentGroup:(CDRExampleGroup *)currentGroup {
+    CDRExampleGroup *oldGroup = [self currentGroup];
+    Ivar ivar = object_getInstanceVariable(self, "currentGroup_", NULL);
+    object_setIvar(self, ivar, [currentGroup retain]);
+    [oldGroup release];
+}
+
+- (CDRExampleGroup *)rootGroup {
+    Ivar ivar = object_getInstanceVariable(self, "rootGroup_", NULL);
+    return object_getIvar(self, ivar);
+}
+
+- (void)setRootGroup:(CDRExampleGroup *)rootGroup {
+    CDRExampleGroup *oldGroup = [self rootGroup];
+    Ivar ivar = object_getInstanceVariable(self, "rootGroup_", NULL);
+    object_setIvar(self, ivar, [rootGroup retain]);
+    [oldGroup release];
+}
+
+- (NSString *)fileName {
+    Ivar ivar = object_getInstanceVariable(self, "fileName_", NULL);
+    return object_getIvar(self, ivar);
+}
+
+- (void)setFileName:(NSString *)fileName {
+    NSString *oldFileName = [self fileName];
+    object_setInstanceVariable(self, "fileName_", [fileName retain]);
+    [oldFileName release];
+}
+
+- (CDRSymbolicator *)symbolicator {
+    Ivar ivar = object_getInstanceVariable(self, "symbolicator_", NULL);
+    return object_getIvar(self, ivar);
+}
+
+- (void)setSymbolicator:(CDRSymbolicator *)symbolicator {
+    CDRSymbolicator *oldSymbolicator = [self symbolicator];
+    object_setInstanceVariable(self, "symbolicator_", [symbolicator retain]);
+    [oldSymbolicator release];
+}
 
 #pragma mark Memory
-
-- (id)init {
-    if (self = [super init]) {
-        self.rootGroup = [[[CDRExampleGroup alloc] initWithText:[[self class] description] isRoot:YES] autorelease];
-        self.rootGroup.parent = [CDRSpecHelper specHelper];
-        self.currentGroup = self.rootGroup;
-        self.symbolicator = [[[CDRSymbolicator alloc] init] autorelease];
-    }
-    return self;
-}
 
 - (void)dealloc {
     self.rootGroup = nil;
@@ -158,6 +188,11 @@ void fail(NSString *reason) {
 }
 
 - (void)defineBehaviors {
+    self.rootGroup = [[[CDRExampleGroup alloc] initWithText:[[self class] description] isRoot:YES] autorelease];
+    self.rootGroup.parent = [CDRSpecHelper specHelper];
+    self.currentGroup = self.rootGroup;
+    self.symbolicator = [[[CDRSymbolicator alloc] init] autorelease];
+
     CDR_currentSpec = self;
     [self declareBehaviors];
     CDR_currentSpec = nil;
@@ -255,21 +290,23 @@ void fail(NSString *reason) {
 
 @end
 
+extern NSArray *CDRPermuteSpecClassesWithSeed(NSArray *unsortedSpecClasses, unsigned int seed);
+unsigned int CDRGetRandomSeed();
+const char *CDRSpecDefinedBehaviorsKey;
 @implementation CDRSpec (XCTestSupport)
-
-- (instancetype)initWithInvocation:(NSInvocation *)invocation {
-    self = [self init];
-    if (self) {
-        self.invocation = invocation;
-        [self defineBehaviors];
-    }
-    return self;
-}
 
 - (NSString *)name {
     return [NSString stringWithFormat:@"-[%@ %@]",
-            [NSStringFromClass([self class]) substringFromIndex:1],
-            NSStringFromSelector([[self invocation] selector])];
+            [self testClassName],
+            [self testMethodName]];
+}
+
+- (NSString *)testClassName {
+    return [NSStringFromClass([self class]) substringFromIndex:1];
+}
+
+- (NSString *)testMethodName {
+    return NSStringFromSelector([[self invocation] selector]);
 }
 
 - (void)invokeTest {
@@ -298,7 +335,6 @@ void fail(NSString *reason) {
     NSString *className = NSStringFromClass([self class]);
     id testSuite = [(id)NSClassFromString(@"XCTestSuite") testSuiteWithName:className];
 
-
     NSString *newClassName = [NSString stringWithFormat:@"_%@", className];
     size_t size = class_getInstanceSize([self class]) - class_getInstanceSize([NSObject class]);
     Class newXCTestSubclass = objc_allocateClassPair(NSClassFromString(@"XCTestCase"), [newClassName UTF8String], size);
@@ -310,6 +346,7 @@ void fail(NSString *reason) {
     objc_registerClassPair(newXCTestSubclass);
 
     CDRSpec *spec = [[[newXCTestSubclass alloc] init] autorelease];
+
     [spec defineBehaviors];
 
     CDROTestNamer *namer = [[CDROTestNamer new] autorelease];
@@ -318,6 +355,7 @@ void fail(NSString *reason) {
     NSUInteger i = 0;
     for (CDRExample *example in examples) {
         IMP imp = imp_implementationWithBlock(^(id instance){
+            [instance defineBehaviors];
             CDRExample *theExample = [instance allExamples][i];
             [theExample runWithDispatcher:nil];
         });
