@@ -98,6 +98,7 @@ void fail(NSString *reason) {
 
 - (void)addTest:(id)test;
 - (NSArray *)tests;
+- (NSArray *)allTests; // SenTestingKit
 
 + (id)testCaseWithInvocation:(NSInvocation *)invocation;
 - (id)initWithInvocation:(NSInvocation *)invocation;
@@ -352,11 +353,13 @@ void fail(NSString *reason) {
 
 - (id)testSuite {
     NSString *className = NSStringFromClass([self class]);
-    id testSuite = [(id)NSClassFromString(@"XCTestSuite") testSuiteWithName:className];
+    Class testSuiteClass = NSClassFromString(@"XCTestSuite") ?: NSClassFromString(@"SenTestSuite");
+    id testSuite = [(id)testSuiteClass testSuiteWithName:className];
 
     NSString *newClassName = [NSString stringWithFormat:@"_%@", className];
     size_t size = class_getInstanceSize([self class]) - class_getInstanceSize([NSObject class]);
-    Class newXCTestSubclass = objc_allocateClassPair(NSClassFromString(@"XCTestCase"), [newClassName UTF8String], size);
+    Class testCaseClass = NSClassFromString(@"XCTestCase") ?: NSClassFromString(@"SenTestCase");
+    Class newXCTestSubclass = objc_allocateClassPair(testCaseClass, [newClassName UTF8String], size);
 
     NSSet *excludes = [NSSet setWithObject:@"testSuite"];
     CDRCopyClassInternalsFromClass([self superclass], newXCTestSubclass, excludes);
@@ -385,7 +388,8 @@ void fail(NSString *reason) {
         i++;
     }
 
-    for (id test in [[(id)[spec class] defaultTestSuite] tests]) {
+    id defaultTestSuite = [(id)[spec class] defaultTestSuite];
+    for (id test in [defaultTestSuite valueForKey:@"tests"]) {
         [testSuite addTest:test];
     }
 
