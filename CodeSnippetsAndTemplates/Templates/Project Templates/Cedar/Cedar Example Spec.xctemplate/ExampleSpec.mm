@@ -1,3 +1,5 @@
+#import <Cedar/Cedar.h>
+
 using namespace Cedar::Matchers;
 using namespace Cedar::Doubles;
 
@@ -34,4 +36,3 @@ describe(@"Example specs on NSString", ^{
 });
 
 SPEC_END
-
