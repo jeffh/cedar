@@ -1983,7 +1983,7 @@
 			name = OCUnitAppLogicTests;
 			productName = OCUnitAppLogicTests;
 			productReference = 96158A86144A915E005895CE /* OCUnitAppLogicTests.octest */;
-			productType = "com.apple.product-type.bundle.ocunit-test";
+			productType = "com.apple.product-type.bundle";
 		};
 		96A07EEE13F276640021974D /* FocusedSpecs */ = {
 			isa = PBXNativeTarget;
@@ -2037,7 +2037,7 @@
 			name = OCUnitAppTests;
 			productName = OCUnitAppTests;
 			productReference = 96B5FA11144A81A8000A6A5D /* OCUnitAppTests.octest */;
-			productType = "com.apple.product-type.bundle.ocunit-test";
+			productType = "com.apple.product-type.bundle";
 		};
 		AE02E7E3184EABCD00414F19 /* iOSFrameworkSpecs */ = {
 			isa = PBXNativeTarget;
