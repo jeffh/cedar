@@ -143,7 +143,6 @@ void CDRRunTests(id self, SEL _cmd, id ignored) {
 
 + (void)load {
     CDRInjectIntoXCTestRunner();
-//    CDRHijackOCUnitAndXCTestRun((IMP)CDRRunTests);
 }
 
 - (void)runAllTestsWithTestProbe:(id)testProbe {

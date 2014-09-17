@@ -12,6 +12,8 @@ OCUNIT_LOGIC_SPECS_TARGET_NAME = "OCUnitAppLogicTests"
 OCUNIT_APPLICATION_SPECS_TARGET_NAME = "OCUnitAppTests"
 XCUNIT_APPLICATION_SPECS_TARGET_NAME = "OCUnitApp + XCTest"
 
+OSX_OCUNIT_SPECS_SCHEME_NAME = "OSXHostApp"
+
 CEDAR_FRAMEWORK_TARGET_NAME = "Cedar"
 CEDAR_IOS_FRAMEWORK_TARGET_NAME = "Cedar-iOS"
 TEMPLATE_IDENTIFIER_PREFIX = "com.pivotallabs.cedar."
@@ -444,6 +446,20 @@ namespace :testbundles do
 
         test_bundle = File.join(Xcode.build_dir("-iphonesimulator"), "#{OCUNIT_APPLICATION_SPECS_TARGET_NAME}.octest")
         Simulator.launch_bundle(Xcode.build_dir("-iphonesimulator"), APP_IOS_NAME, test_bundle, "ocunit.application.specs.log")
+      end
+    end
+  end
+
+  namespace :osx do
+    desc "Build and run OS X OCUnit specs (#{OSX_OCUNIT_SPECS_SCHEME_NAME})"
+    task :ocunit do
+      if Xcode.is_octest_deprecated?
+        Xcode.test(
+          scheme: OSX_OCUNIT_SPECS_SCHEME_NAME,
+          logfile: "osx-ocunit-specs.log",
+        )
+      else
+        Shell.run "xcodebuild -project #{PROJECT_NAME}.xcodeproj -scheme #{OSX_OCUNIT_SPECS_SCHEME_NAME} -configuration #{CONFIGURATION} -arch x86_64 build TEST_AFTER_BUILD=YES SYMROOT='#{BUILD_DIR}'", "osx-ocunit-specs.log"
       end
     end
   end

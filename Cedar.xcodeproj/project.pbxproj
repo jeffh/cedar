@@ -139,7 +139,6 @@
 		96158A9D144A91B3005895CE /* Cedar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEEE1FB611DC271300029872 /* Cedar.framework */; };
 		96158A9F144A91C4005895CE /* OCUnitAppLogicTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = 96158A9E144A91C4005895CE /* OCUnitAppLogicTests.mm */; };
 		96158AA2144A91DC005895CE /* DummyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 96158AA1144A91DC005895CE /* DummyModel.m */; };
-		96158AA3144A9210005895CE /* DummyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 96158AA1144A91DC005895CE /* DummyModel.m */; };
 		9637852B1491D6D40059C9F6 /* CDROTestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9637852A1491D6D30059C9F6 /* CDROTestHelper.m */; };
 		9637852C1491D6D40059C9F6 /* CDROTestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9637852A1491D6D30059C9F6 /* CDROTestHelper.m */; };
 		9637852E1491D84F0059C9F6 /* CDROTestHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 9637852D1491D84F0059C9F6 /* CDROTestHelper.h */; };
@@ -307,6 +306,23 @@
 		AE55BF1E19A7CFAB005948E6 /* CDRRuntimeUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = AE55BF1D19A7CF83005948E6 /* CDRRuntimeUtilities.h */; };
 		AE597B4115B0638B00EEF305 /* InvocationMatcher.h in Headers */ = {isa = PBXBuildFile; fileRef = AE597B4015B0638B00EEF305 /* InvocationMatcher.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AE597B4215B0638B00EEF305 /* InvocationMatcher.h in Headers */ = {isa = PBXBuildFile; fileRef = AE597B4015B0638B00EEF305 /* InvocationMatcher.h */; };
+		AE5E3DCE19C9005A00A4043A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AE5E3DCD19C9005A00A4043A /* main.m */; };
+		AE5E3DD119C9005A00A4043A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AE5E3DD019C9005A00A4043A /* AppDelegate.m */; };
+		AE5E3E3A19C903FB00A4043A /* OSXOCTestBundle.m in Sources */ = {isa = PBXBuildFile; fileRef = AE5E3E3919C903FB00A4043A /* OSXOCTestBundle.m */; };
+		AE5E3E4219C9040A00A4043A /* Cedar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEEE1FB611DC271300029872 /* Cedar.framework */; };
+		AE5E3E4319C9041700A4043A /* CDRSpecSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9672F0A81615C3F40012ED58 /* CDRSpecSpec.mm */; };
+		AE5E3E4419C9041700A4043A /* CDRExampleSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = AEEE1FE911DC27B800029872 /* CDRExampleSpec.mm */; };
+		AE5E3E4519C9041700A4043A /* CDRExampleGroupSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = AEEE1FE811DC27B800029872 /* CDRExampleGroupSpec.mm */; };
+		AE5E3E4619C9041700A4043A /* CDRSymbolicatorSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = 96C95B7D161339160018606B /* CDRSymbolicatorSpec.mm */; };
+		AE5E3E4819C9041700A4043A /* GlobalBeforeEachSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = AEEE1FF011DC27B800029872 /* GlobalBeforeEachSpec.mm */; };
+		AE5E3E4919C9041700A4043A /* ObjCHeadersSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = 96B5918E1630F5840068EA5E /* ObjCHeadersSpec.mm */; };
+		AE5E3E4A19C9041700A4043A /* SpecSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = AEEE1FF111DC27B800029872 /* SpecSpec.mm */; };
+		AE5E3E4B19C9041700A4043A /* SpecSpec2.m in Sources */ = {isa = PBXBuildFile; fileRef = AEEE1FF211DC27B800029872 /* SpecSpec2.m */; };
+		AE5E3E4C19C9042100A4043A /* ArgumentReleaser.m in Sources */ = {isa = PBXBuildFile; fileRef = AE807888183C71950078C608 /* ArgumentReleaser.m */; };
+		AE5E3E4D19C9042100A4043A /* FibonacciCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = E32861311604F287001FA77E /* FibonacciCalculator.m */; };
+		AE5E3E4E19C9042100A4043A /* ObjectWithCollections.m in Sources */ = {isa = PBXBuildFile; fileRef = AE3E8F36184FEEE000633740 /* ObjectWithCollections.m */; };
+		AE5E3E4F19C9042100A4043A /* SimpleIncrementer.m in Sources */ = {isa = PBXBuildFile; fileRef = AE80788A183C71950078C608 /* SimpleIncrementer.m */; };
+		AE5E3E5019C9042100A4043A /* SimpleKeyValueObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = AE80788C183C71950078C608 /* SimpleKeyValueObserver.m */; };
 		AE6F3F341458D7C100C98F1E /* BeGreaterThanSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = AE6F3F331458D7C100C98F1E /* BeGreaterThanSpec.mm */; };
 		AE6F3F351458D7C100C98F1E /* BeGreaterThanSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = AE6F3F331458D7C100C98F1E /* BeGreaterThanSpec.mm */; };
 		AE71E7CC175E958F002A54D5 /* ARCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE71E7CB175E958F002A54D5 /* ARCViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
@@ -560,6 +576,20 @@
 			remoteGlobalIDString = AEEE224B11DC2BBB00029872;
 			remoteInfo = "Cedar-iOS";
 		};
+		AE5E3E3E19C9040300A4043A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AEEE1FA611DC26EA00029872 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AE5E3DC819C9005A00A4043A;
+			remoteInfo = OSXHostApp;
+		};
+		AE5E3E4019C9040400A4043A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AEEE1FA611DC26EA00029872 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AE5E3DC819C9005A00A4043A;
+			remoteInfo = OSXHostApp;
+		};
 		AEEE218A11DC28E700029872 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = AEEE1FA611DC26EA00029872 /* Project object */;
@@ -808,6 +838,20 @@
 		AE55BF1A19A7CF58005948E6 /* CDRRuntimeUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDRRuntimeUtilities.m; sourceTree = "<group>"; };
 		AE55BF1D19A7CF83005948E6 /* CDRRuntimeUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CDRRuntimeUtilities.h; sourceTree = "<group>"; };
 		AE597B4015B0638B00EEF305 /* InvocationMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InvocationMatcher.h; sourceTree = "<group>"; };
+		AE5E3DBE19C9002300A4043A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AE5E3DBF19C9002300A4043A /* OSXOCTestBundle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OSXOCTestBundle.m; sourceTree = "<group>"; };
+		AE5E3DC919C9005A00A4043A /* OSXHostApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OSXHostApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE5E3DCC19C9005A00A4043A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AE5E3DCD19C9005A00A4043A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		AE5E3DCF19C9005A00A4043A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		AE5E3DD019C9005A00A4043A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		AE5E3DD219C9005A00A4043A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		AE5E3DD519C9005A00A4043A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		AE5E3DE019C9005A00A4043A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AE5E3DE119C9005A00A4043A /* OSXHostAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OSXHostAppTests.m; sourceTree = "<group>"; };
+		AE5E3E3519C903FB00A4043A /* OSXOCTestBundle.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OSXOCTestBundle.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE5E3E3819C903FB00A4043A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AE5E3E3919C903FB00A4043A /* OSXOCTestBundle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OSXOCTestBundle.m; sourceTree = "<group>"; };
 		AE6F3F331458D7C100C98F1E /* BeGreaterThanSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; lineEnding = 0; path = BeGreaterThanSpec.mm; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		AE71E7CA175E958F002A54D5 /* ARCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARCViewController.h; sourceTree = "<group>"; };
 		AE71E7CB175E958F002A54D5 /* ARCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARCViewController.m; sourceTree = "<group>"; };
@@ -1004,6 +1048,21 @@
 				AE02E7E6184EABCD00414F19 /* CoreGraphics.framework in Frameworks */,
 				AE02E7E7184EABCD00414F19 /* UIKit.framework in Frameworks */,
 				AE02E7E5184EABCD00414F19 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AE5E3DC619C9005A00A4043A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AE5E3E3219C903FB00A4043A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE5E3E4219C9040A00A4043A /* Cedar.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1357,6 +1416,78 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		AE5E3DBC19C9002300A4043A /* OSXOCTestBundle */ = {
+			isa = PBXGroup;
+			children = (
+				AE5E3DBF19C9002300A4043A /* OSXOCTestBundle.m */,
+				AE5E3DBD19C9002300A4043A /* Supporting Files */,
+			);
+			path = OSXOCTestBundle;
+			sourceTree = "<group>";
+		};
+		AE5E3DBD19C9002300A4043A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AE5E3DBE19C9002300A4043A /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AE5E3DCA19C9005A00A4043A /* OSXHostApp */ = {
+			isa = PBXGroup;
+			children = (
+				AE5E3DCF19C9005A00A4043A /* AppDelegate.h */,
+				AE5E3DD019C9005A00A4043A /* AppDelegate.m */,
+				AE5E3DD219C9005A00A4043A /* Images.xcassets */,
+				AE5E3DD419C9005A00A4043A /* MainMenu.xib */,
+				AE5E3DCB19C9005A00A4043A /* Supporting Files */,
+			);
+			path = OSXHostApp;
+			sourceTree = "<group>";
+		};
+		AE5E3DCB19C9005A00A4043A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AE5E3DCC19C9005A00A4043A /* Info.plist */,
+				AE5E3DCD19C9005A00A4043A /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AE5E3DDE19C9005A00A4043A /* OSXHostAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				AE5E3DE119C9005A00A4043A /* OSXHostAppTests.m */,
+				AE5E3DDF19C9005A00A4043A /* Supporting Files */,
+			);
+			path = OSXHostAppTests;
+			sourceTree = "<group>";
+		};
+		AE5E3DDF19C9005A00A4043A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AE5E3DE019C9005A00A4043A /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AE5E3E3619C903FB00A4043A /* OSXOCTestBundle */ = {
+			isa = PBXGroup;
+			children = (
+				AE5E3E3919C903FB00A4043A /* OSXOCTestBundle.m */,
+				AE5E3E3719C903FB00A4043A /* Supporting Files */,
+			);
+			path = OSXOCTestBundle;
+			sourceTree = "<group>";
+		};
+		AE5E3E3719C903FB00A4043A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AE5E3E3819C903FB00A4043A /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		AE7F170317272FB000E1146D /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -1429,6 +1560,10 @@
 				AEEE1FC311DC27B800029872 /* Source */,
 				AEEE1FE711DC27B800029872 /* Spec */,
 				9668DCDE144A92BA007C7294 /* OCUnit Support */,
+				AE5E3DBC19C9002300A4043A /* OSXOCTestBundle */,
+				AE5E3DCA19C9005A00A4043A /* OSXHostApp */,
+				AE5E3DDE19C9005A00A4043A /* OSXHostAppTests */,
+				AE5E3E3619C903FB00A4043A /* OSXOCTestBundle */,
 				AEEE202611DC286500029872 /* Frameworks */,
 				AEEE1FB711DC271300029872 /* Products */,
 				AEC5400D185E998D00B0D41D /* Images.xcassets */,
@@ -1452,6 +1587,8 @@
 				96158A86144A915E005895CE /* OCUnitAppLogicTests.octest */,
 				1F45A3DD180E4796003C1E36 /* XCUnitAppTests.xctest */,
 				AE02E7E4184EABCD00414F19 /* iOSFrameworkSpecs.app */,
+				AE5E3DC919C9005A00A4043A /* OSXHostApp.app */,
+				AE5E3E3519C903FB00A4043A /* OSXOCTestBundle.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1853,7 +1990,7 @@
 			name = XCUnitAppTests;
 			productName = OCUnitAppTests;
 			productReference = 1F45A3DD180E4796003C1E36 /* XCUnitAppTests.xctest */;
-			productType = "com.apple.product-type.bundle";
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		96158A85144A915E005895CE /* OCUnitAppLogicTests */ = {
 			isa = PBXNativeTarget;
@@ -1872,7 +2009,7 @@
 			name = OCUnitAppLogicTests;
 			productName = OCUnitAppLogicTests;
 			productReference = 96158A86144A915E005895CE /* OCUnitAppLogicTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productType = "com.apple.product-type.bundle.ocunit-test";
 		};
 		96A07EEE13F276640021974D /* FocusedSpecs */ = {
 			isa = PBXNativeTarget;
@@ -1926,7 +2063,7 @@
 			name = OCUnitAppTests;
 			productName = OCUnitAppTests;
 			productReference = 96B5FA11144A81A8000A6A5D /* OCUnitAppTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productType = "com.apple.product-type.bundle.ocunit-test";
 		};
 		AE02E7E3184EABCD00414F19 /* iOSFrameworkSpecs */ = {
 			isa = PBXNativeTarget;
@@ -1945,6 +2082,42 @@
 			productName = "Cedar-iOS.FrameworkSpecs";
 			productReference = AE02E7E4184EABCD00414F19 /* iOSFrameworkSpecs.app */;
 			productType = "com.apple.product-type.application";
+		};
+		AE5E3DC819C9005A00A4043A /* OSXHostApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AE5E3DE319C9005A00A4043A /* Build configuration list for PBXNativeTarget "OSXHostApp" */;
+			buildPhases = (
+				AE5E3DC519C9005A00A4043A /* Sources */,
+				AE5E3DC619C9005A00A4043A /* Frameworks */,
+				AE5E3DC719C9005A00A4043A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OSXHostApp;
+			productName = OSXHostApp;
+			productReference = AE5E3DC919C9005A00A4043A /* OSXHostApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AE5E3E3419C903FB00A4043A /* OSXOCTestBundle */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AE5E3E3B19C903FB00A4043A /* Build configuration list for PBXNativeTarget "OSXOCTestBundle" */;
+			buildPhases = (
+				AE5E3E3119C903FB00A4043A /* Sources */,
+				AE5E3E3219C903FB00A4043A /* Frameworks */,
+				AE5E3E3319C903FB00A4043A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AE5E3E3F19C9040300A4043A /* PBXTargetDependency */,
+				AE5E3E4119C9040400A4043A /* PBXTargetDependency */,
+			);
+			name = OSXOCTestBundle;
+			productName = OSXOCTestBundle;
+			productReference = AE5E3E3519C903FB00A4043A /* OSXOCTestBundle.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		AEEE1FB511DC271300029872 /* Cedar */ = {
 			isa = PBXNativeTarget;
@@ -2024,6 +2197,15 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0510;
+				TargetAttributes = {
+					AE5E3DC819C9005A00A4043A = {
+						CreatedOnToolsVersion = 6.0;
+					};
+					AE5E3E3419C903FB00A4043A = {
+						CreatedOnToolsVersion = 6.0;
+						TestTargetID = AE5E3DC819C9005A00A4043A;
+					};
+				};
 			};
 			buildConfigurationList = AEEE1FA911DC26EA00029872 /* Build configuration list for PBXProject "Cedar" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -2053,6 +2235,8 @@
 				96B5FA10144A81A8000A6A5D /* OCUnitAppTests */,
 				1F45A3C8180E4796003C1E36 /* XCUnitAppTests */,
 				96158A85144A915E005895CE /* OCUnitAppLogicTests */,
+				AE5E3DC819C9005A00A4043A /* OSXHostApp */,
+				AE5E3E3419C903FB00A4043A /* OSXOCTestBundle */,
 			);
 		};
 /* End PBXProject section */
@@ -2097,6 +2281,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE02E7ED184EABCD00414F19 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AE5E3DC719C9005A00A4043A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AE5E3E3319C903FB00A4043A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2242,7 +2440,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				96158A9F144A91C4005895CE /* OCUnitAppLogicTests.mm in Sources */,
-				96158AA3144A9210005895CE /* DummyModel.m in Sources */,
 				96E807BD1491C6D200388D9D /* OCUnitAppLogicTestsWithSenTestingKit.m in Sources */,
 				AE34723219C124CE005CA6F1 /* CDRExampleGroupSpec.mm in Sources */,
 				AE34723819C12534005CA6F1 /* FibonacciCalculator.m in Sources */,
@@ -2321,6 +2518,36 @@
 				AE02E812184EC7ED00414F19 /* ObjectWithWeakDelegate.m in Sources */,
 				AE02E7EF184EABCE00414F19 /* main.m in Sources */,
 				AE02E83118526E9F00414F19 /* Cedar-iOSSpec.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AE5E3DC519C9005A00A4043A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE5E3DD119C9005A00A4043A /* AppDelegate.m in Sources */,
+				AE5E3DCE19C9005A00A4043A /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AE5E3E3119C903FB00A4043A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE5E3E4E19C9042100A4043A /* ObjectWithCollections.m in Sources */,
+				AE5E3E5019C9042100A4043A /* SimpleKeyValueObserver.m in Sources */,
+				AE5E3E4419C9041700A4043A /* CDRExampleSpec.mm in Sources */,
+				AE5E3E4A19C9041700A4043A /* SpecSpec.mm in Sources */,
+				AE5E3E3A19C903FB00A4043A /* OSXOCTestBundle.m in Sources */,
+				AE5E3E4819C9041700A4043A /* GlobalBeforeEachSpec.mm in Sources */,
+				AE5E3E4D19C9042100A4043A /* FibonacciCalculator.m in Sources */,
+				AE5E3E4619C9041700A4043A /* CDRSymbolicatorSpec.mm in Sources */,
+				AE5E3E4319C9041700A4043A /* CDRSpecSpec.mm in Sources */,
+				AE5E3E4519C9041700A4043A /* CDRExampleGroupSpec.mm in Sources */,
+				AE5E3E4C19C9042100A4043A /* ArgumentReleaser.m in Sources */,
+				AE5E3E4B19C9041700A4043A /* SpecSpec2.m in Sources */,
+				AE5E3E4F19C9042100A4043A /* SimpleIncrementer.m in Sources */,
+				AE5E3E4919C9041700A4043A /* ObjCHeadersSpec.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2610,6 +2837,16 @@
 			target = AEEE224B11DC2BBB00029872 /* Cedar-iOS */;
 			targetProxy = AE02E80E184EADE100414F19 /* PBXContainerItemProxy */;
 		};
+		AE5E3E3F19C9040300A4043A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AE5E3DC819C9005A00A4043A /* OSXHostApp */;
+			targetProxy = AE5E3E3E19C9040300A4043A /* PBXContainerItemProxy */;
+		};
+		AE5E3E4119C9040400A4043A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AE5E3DC819C9005A00A4043A /* OSXHostApp */;
+			targetProxy = AE5E3E4019C9040400A4043A /* PBXContainerItemProxy */;
+		};
 		AEEE218B11DC28E700029872 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = AEEE1FB511DC271300029872 /* Cedar */;
@@ -2669,6 +2906,14 @@
 				AE02E7EC184EABCD00414F19 /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		AE5E3DD419C9005A00A4043A /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AE5E3DD519C9005A00A4043A /* Base */,
+			);
+			name = MainMenu.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -3063,6 +3308,134 @@
 			};
 			name = Release;
 		};
+		AE5E3DE419C9005A00A4043A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = OSXHostApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		AE5E3DE519C9005A00A4043A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = OSXHostApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		AE5E3E3C19C903FB00A4043A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = OSXOCTestBundle/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OSXHostApp.app/Contents/MacOS/OSXHostApp";
+			};
+			name = Debug;
+		};
+		AE5E3E3D19C903FB00A4043A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = OSXOCTestBundle/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OSXHostApp.app/Contents/MacOS/OSXHostApp";
+			};
+			name = Release;
+		};
 		AEEE1FA711DC26EA00029872 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -3444,6 +3817,24 @@
 			buildConfigurations = (
 				AE02E809184EABCE00414F19 /* Debug */,
 				AE02E80A184EABCE00414F19 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AE5E3DE319C9005A00A4043A /* Build configuration list for PBXNativeTarget "OSXHostApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AE5E3DE419C9005A00A4043A /* Debug */,
+				AE5E3DE519C9005A00A4043A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AE5E3E3B19C903FB00A4043A /* Build configuration list for PBXNativeTarget "OSXOCTestBundle" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AE5E3E3C19C903FB00A4043A /* Debug */,
+				AE5E3E3D19C903FB00A4043A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
