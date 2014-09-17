@@ -399,7 +399,7 @@ namespace :testbundles do
   end
 
   desc "Build and run XCUnit specs (#{XCUNIT_APPLICATION_SPECS_TARGET_NAME})"
-  task xcunit: :convert_to_xcode5 do
+  task :xcunit do
     Simulator.kill
 
     if Xcode.is_octest_deprecated? and SDK_VERSION.split('.')[0].to_i >= 7
@@ -419,7 +419,7 @@ namespace :testbundles do
 
   namespace :ocunit do
     desc "Build and run OCUnit logic specs (#{OCUNIT_LOGIC_SPECS_TARGET_NAME})"
-    task logic: :convert_to_xcode5 do
+    task :logic do
       if Xcode.is_octest_deprecated?
         Xcode.test(
           scheme: APP_NAME,
@@ -431,7 +431,7 @@ namespace :testbundles do
     end
 
     desc "Build and run OCUnit application specs (#{OCUNIT_APPLICATION_SPECS_TARGET_NAME})"
-    task application: :convert_to_xcode5 do
+    task :application do
       Simulator.kill
 
       if Xcode.is_octest_deprecated?

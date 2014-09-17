@@ -89,7 +89,6 @@
 		34681C2E18FE4884009D38AC /* CDRTypeUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 34681C2B18FE451E009D38AC /* CDRTypeUtilities.m */; };
 		34681C3018FE4B68009D38AC /* CDRTypeUtilitiesSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = 34681C2F18FE4B68009D38AC /* CDRTypeUtilitiesSpec.mm */; };
 		34681C3118FE4B68009D38AC /* CDRTypeUtilitiesSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = 34681C2F18FE4B68009D38AC /* CDRTypeUtilitiesSpec.mm */; };
-		34832FDA1908C996008A52DE /* CDROTestRunner.m in Sources */ = {isa = PBXBuildFile; fileRef = 96EA1CA7142C6425001A78E0 /* CDROTestRunner.m */; };
 		34832FDB1908C9E3008A52DE /* CDROTestRunner.h in Headers */ = {isa = PBXBuildFile; fileRef = 96EA1CAD142C6449001A78E0 /* CDROTestRunner.h */; };
 		34ADD2E01921F18100B057AC /* AnyInstanceOfClassArgument.mm in Sources */ = {isa = PBXBuildFile; fileRef = 34ADD2DE1921F18100B057AC /* AnyInstanceOfClassArgument.mm */; };
 		34ADD2E11921F18100B057AC /* AnyInstanceOfClassArgument.mm in Sources */ = {isa = PBXBuildFile; fileRef = 34ADD2DE1921F18100B057AC /* AnyInstanceOfClassArgument.mm */; };
@@ -323,6 +322,7 @@
 		AE5E3E4E19C9042100A4043A /* ObjectWithCollections.m in Sources */ = {isa = PBXBuildFile; fileRef = AE3E8F36184FEEE000633740 /* ObjectWithCollections.m */; };
 		AE5E3E4F19C9042100A4043A /* SimpleIncrementer.m in Sources */ = {isa = PBXBuildFile; fileRef = AE80788A183C71950078C608 /* SimpleIncrementer.m */; };
 		AE5E3E5019C9042100A4043A /* SimpleKeyValueObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = AE80788C183C71950078C608 /* SimpleKeyValueObserver.m */; };
+		AE67A4D719C908CB00D8D537 /* CDROTestRunner.m in Sources */ = {isa = PBXBuildFile; fileRef = 96EA1CA7142C6425001A78E0 /* CDROTestRunner.m */; };
 		AE6F3F341458D7C100C98F1E /* BeGreaterThanSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = AE6F3F331458D7C100C98F1E /* BeGreaterThanSpec.mm */; };
 		AE6F3F351458D7C100C98F1E /* BeGreaterThanSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = AE6F3F331458D7C100C98F1E /* BeGreaterThanSpec.mm */; };
 		AE71E7CC175E958F002A54D5 /* ARCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE71E7CB175E958F002A54D5 /* ARCViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
@@ -849,7 +849,7 @@
 		AE5E3DD519C9005A00A4043A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		AE5E3DE019C9005A00A4043A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AE5E3DE119C9005A00A4043A /* OSXHostAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OSXHostAppTests.m; sourceTree = "<group>"; };
-		AE5E3E3519C903FB00A4043A /* OSXOCTestBundle.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OSXOCTestBundle.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE5E3E3519C903FB00A4043A /* OSXOCTestBundle.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OSXOCTestBundle.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE5E3E3819C903FB00A4043A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AE5E3E3919C903FB00A4043A /* OSXOCTestBundle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OSXOCTestBundle.m; sourceTree = "<group>"; };
 		AE6F3F331458D7C100C98F1E /* BeGreaterThanSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; lineEnding = 0; path = BeGreaterThanSpec.mm; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -1588,7 +1588,7 @@
 				1F45A3DD180E4796003C1E36 /* XCUnitAppTests.xctest */,
 				AE02E7E4184EABCD00414F19 /* iOSFrameworkSpecs.app */,
 				AE5E3DC919C9005A00A4043A /* OSXHostApp.app */,
-				AE5E3E3519C903FB00A4043A /* OSXOCTestBundle.xctest */,
+				AE5E3E3519C903FB00A4043A /* OSXOCTestBundle.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2116,7 +2116,7 @@
 			);
 			name = OSXOCTestBundle;
 			productName = OSXOCTestBundle;
-			productReference = AE5E3E3519C903FB00A4043A /* OSXOCTestBundle.xctest */;
+			productReference = AE5E3E3519C903FB00A4043A /* OSXOCTestBundle.bundle */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		AEEE1FB511DC271300029872 /* Cedar */ = {
@@ -2704,7 +2704,6 @@
 				AE167EF315B216DA005960B9 /* RaiseException.mm in Sources */,
 				34ADD2E81921F33800B057AC /* AnyInstanceConformingToProtocolArgument.mm in Sources */,
 				AE74907215B486CD008EA127 /* CDRFake.mm in Sources */,
-				34832FDA1908C996008A52DE /* CDROTestRunner.m in Sources */,
 				AE74907715B493C4008EA127 /* CDRProtocolFake.mm in Sources */,
 				AE36AC6615B5CA6E00EB6C51 /* CedarDouble.mm in Sources */,
 				34ADE41918F23E6B00BD1E99 /* NSMethodSignature+Cedar.m in Sources */,
@@ -2719,6 +2718,7 @@
 				E31179D6161FD937007D3CDE /* CDRSlowTestStatistics.m in Sources */,
 				22FB7B4416ACBB3A00012D69 /* HeadlessSimulatorWorkaround.m in Sources */,
 				AE7F170B172730B000E1146D /* NSInvocation+Cedar.m in Sources */,
+				AE67A4D719C908CB00D8D537 /* CDROTestRunner.m in Sources */,
 				34ADD2E11921F18100B057AC /* AnyInstanceOfClassArgument.mm in Sources */,
 				AED23E6D173D5545003D7A41 /* BeCloseTo.mm in Sources */,
 				AE02021A17452007009A7915 /* StringifiersBase.mm in Sources */,
