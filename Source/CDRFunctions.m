@@ -380,7 +380,7 @@ static id CDRCreateXCTestSuite() {
         size_t size = class_getInstanceSize([CDRXTestSuite class]) - class_getInstanceSize([NSObject class]);
         testSuiteSubclass = objc_allocateClassPair(testSuiteClass, "_CDRXTestSuite", size);
         CDRCopyClassInternalsFromClass([CDRXTestSuite class], testSuiteSubclass);
-        objc_registerClassPair(testSuiteClass);
+        objc_registerClassPair(testSuiteSubclass);
     }
 
     id testSuite = [[(id)testSuiteSubclass alloc] initWithName:@"Cedar"];
