@@ -12,7 +12,7 @@ using namespace Cedar::Doubles;
 
 SPEC_BEGIN(CDRFunctionsSpec)
 
-describe(@"CDRFunctions", ^{
+describe(@"CDRFunctions", ^{
     describe(@"running a test bundle without linking against XCTest or SenTestingKit", ^{
         it(@"should raise an exception", ^{
             ^{
