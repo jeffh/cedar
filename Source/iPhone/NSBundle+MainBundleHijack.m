@@ -16,16 +16,11 @@ NSBundle *CDRMainBundle(id self, SEL _cmd) {
 + (void)load {
     suppressStandardPipesWhileLoadingClasses();
 
-    NSString *extension = nil;;
+    NSString *extension = CDRGetTestBundleExtension();
 
-    if (CDRIsXCTest()) {
-        extension = @".xctest";
-    } else if (CDRIsOCTest()) {
-        extension = @".octest";
-    }
-
-    if (!extension)
+    if (!extension) {
         return;
+    }
 
     BOOL mainBundleIsApp = [[[NSBundle mainBundle] bundlePath] hasSuffix:@".app"];
     BOOL mainBundleIsTestBundle = [[[NSBundle mainBundle] bundlePath] hasSuffix:extension];

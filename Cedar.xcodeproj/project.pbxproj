@@ -239,7 +239,6 @@
 		AE18A7FC13F4601400C8872C /* Contain.h in Copy headers to framework */ = {isa = PBXBuildFile; fileRef = AE18A7FA13F4601400C8872C /* Contain.h */; };
 		AE18A80A13F4640600C8872C /* ContainSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = AE18A80913F4640600C8872C /* ContainSpec.mm */; };
 		AE18A80B13F4640600C8872C /* ContainSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = AE18A80913F4640600C8872C /* ContainSpec.mm */; };
-		AE1CC6AC19CA123E0091A320 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F956BB2180E07CE00E603A9 /* XCTest.framework */; };
 		AE31A29F19C0F23F00C438C1 /* CDRXTestSuite.h in Headers */ = {isa = PBXBuildFile; fileRef = AE31A29D19C0F23F00C438C1 /* CDRXTestSuite.h */; };
 		AE31A2A019C0F23F00C438C1 /* CDRXTestSuite.h in Headers */ = {isa = PBXBuildFile; fileRef = AE31A29D19C0F23F00C438C1 /* CDRXTestSuite.h */; };
 		AE31A2A119C0F23F00C438C1 /* CDRXTestSuite.m in Sources */ = {isa = PBXBuildFile; fileRef = AE31A29E19C0F23F00C438C1 /* CDRXTestSuite.m */; };
@@ -307,6 +306,8 @@
 		AE597B4215B0638B00EEF305 /* InvocationMatcher.h in Headers */ = {isa = PBXBuildFile; fileRef = AE597B4015B0638B00EEF305 /* InvocationMatcher.h */; };
 		AE6F3F341458D7C100C98F1E /* BeGreaterThanSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = AE6F3F331458D7C100C98F1E /* BeGreaterThanSpec.mm */; };
 		AE6F3F351458D7C100C98F1E /* BeGreaterThanSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = AE6F3F331458D7C100C98F1E /* BeGreaterThanSpec.mm */; };
+		AE6FE27219D4871A00B40D37 /* CDRFunctionsSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = AE6FE27119D4871A00B40D37 /* CDRFunctionsSpec.mm */; };
+		AE6FE27319D4871A00B40D37 /* CDRFunctionsSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = AE6FE27119D4871A00B40D37 /* CDRFunctionsSpec.mm */; };
 		AE71E7CC175E958F002A54D5 /* ARCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE71E7CB175E958F002A54D5 /* ARCViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		AE74902F15B45E80008EA127 /* CDRProtocolFake.h in Headers */ = {isa = PBXBuildFile; fileRef = AE74902E15B45E80008EA127 /* CDRProtocolFake.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AE74903215B45EBA008EA127 /* CDRProtocolFakeSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = AE74903015B45E9D008EA127 /* CDRProtocolFakeSpec.mm */; };
@@ -448,7 +449,6 @@
 		AEEE228411DC2D5200029872 /* SpecSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = AEEE1FF111DC27B800029872 /* SpecSpec.mm */; };
 		AEEE228511DC2D5200029872 /* SpecSpec2.m in Sources */ = {isa = PBXBuildFile; fileRef = AEEE1FF211DC27B800029872 /* SpecSpec2.m */; };
 		AEEE228711DC2D5800029872 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AEEE1FED11DC27B800029872 /* main.m */; };
-		AEEE228811DC2D5800029872 /* SlowSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = AEEE1FEE11DC27B800029872 /* SlowSpec.m */; };
 		AEF32FF2145A2D79002F93BB /* BeGreaterThan.h in Headers */ = {isa = PBXBuildFile; fileRef = AEF32FF1145A2D79002F93BB /* BeGreaterThan.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AEF32FF4145A2E91002F93BB /* CompareEqual.h in Headers */ = {isa = PBXBuildFile; fileRef = AEF32FF3145A2E91002F93BB /* CompareEqual.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AEF32FF5145A2EAC002F93BB /* BeGreaterThan.h in Copy headers to framework */ = {isa = PBXBuildFile; fileRef = AEF32FF1145A2D79002F93BB /* BeGreaterThan.h */; };
@@ -810,15 +810,14 @@
 		AE597B4015B0638B00EEF305 /* InvocationMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InvocationMatcher.h; sourceTree = "<group>"; };
 		AE5E3DBE19C9002300A4043A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AE5E3DBF19C9002300A4043A /* OSXOCTestBundle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OSXOCTestBundle.m; sourceTree = "<group>"; };
-		AE5E3DC919C9005A00A4043A /* OSXHostApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OSXHostApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE5E3DCC19C9005A00A4043A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AE5E3DCD19C9005A00A4043A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AE5E3DCF19C9005A00A4043A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		AE5E3DD019C9005A00A4043A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		AE5E3E3519C903FB00A4043A /* OSXOCTestBundle.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OSXOCTestBundle.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE5E3E3819C903FB00A4043A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AE5E3E3919C903FB00A4043A /* OSXOCTestBundle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OSXOCTestBundle.m; sourceTree = "<group>"; };
 		AE6F3F331458D7C100C98F1E /* BeGreaterThanSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; lineEnding = 0; path = BeGreaterThanSpec.mm; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		AE6FE27119D4871A00B40D37 /* CDRFunctionsSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CDRFunctionsSpec.mm; sourceTree = "<group>"; };
 		AE71E7CA175E958F002A54D5 /* ARCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARCViewController.h; sourceTree = "<group>"; };
 		AE71E7CB175E958F002A54D5 /* ARCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARCViewController.m; sourceTree = "<group>"; };
 		AE74902E15B45E80008EA127 /* CDRProtocolFake.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDRProtocolFake.h; sourceTree = "<group>"; };
@@ -903,7 +902,6 @@
 		AEEE1FE811DC27B800029872 /* CDRExampleGroupSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; lineEnding = 0; path = CDRExampleGroupSpec.mm; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		AEEE1FE911DC27B800029872 /* CDRExampleSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; lineEnding = 0; path = CDRExampleSpec.mm; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		AEEE1FED11DC27B800029872 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		AEEE1FEE11DC27B800029872 /* SlowSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlowSpec.m; sourceTree = "<group>"; };
 		AEEE1FEF11DC27B800029872 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AEEE1FF011DC27B800029872 /* GlobalBeforeEachSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GlobalBeforeEachSpec.mm; sourceTree = "<group>"; };
 		AEEE1FF111DC27B800029872 /* SpecSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SpecSpec.mm; sourceTree = "<group>"; };
@@ -1015,22 +1013,6 @@
 				AE02E7E6184EABCD00414F19 /* CoreGraphics.framework in Frameworks */,
 				AE02E7E7184EABCD00414F19 /* UIKit.framework in Frameworks */,
 				AE02E7E5184EABCD00414F19 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AE5E3DC619C9005A00A4043A /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AE5E3E3219C903FB00A4043A /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				AE1CC6AC19CA123E0091A320 /* XCTest.framework in Frameworks */,
-				AE5E3E4219C9040A00A4043A /* Cedar.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1638,6 +1620,7 @@
 				AEEE1FF211DC27B800029872 /* SpecSpec2.m */,
 				AEEE1FEF11DC27B800029872 /* main.m */,
 				34681C2F18FE4B68009D38AC /* CDRTypeUtilitiesSpec.mm */,
+				AE6FE27119D4871A00B40D37 /* CDRFunctionsSpec.mm */,
 			);
 			path = Spec;
 			sourceTree = "<group>";
@@ -1648,7 +1631,6 @@
 				AE34723F19C2257A005CA6F1 /* XCTest */,
 				AE7DD11117296CB20058EB3B /* CedarApplicationDelegateSpec.mm */,
 				AEEE1FED11DC27B800029872 /* main.m */,
-				AEEE1FEE11DC27B800029872 /* SlowSpec.m */,
 				AE5218D4175979D900A656BC /* WeakReferenceCompatibilitySpec.mm */,
 				228F3FA617E3ECD10000C8AF /* CDRSpyiOSSpec.mm */,
 			);
@@ -2470,6 +2452,7 @@
 				AEEE21C111DC290400029872 /* main.m in Sources */,
 				AEEE21C211DC290400029872 /* GlobalBeforeEachSpec.mm in Sources */,
 				AEEE21C311DC290400029872 /* SpecSpec.mm in Sources */,
+				AE6FE27219D4871A00B40D37 /* CDRFunctionsSpec.mm in Sources */,
 				AE8C87AE136245BB006C9305 /* ExpectFailureWithMessage.m in Sources */,
 				96EA1CBA142C6560001A78E0 /* CDRSpecFailureSpec.mm in Sources */,
 				AEF7301B13ECC4AE00786282 /* BeCloseToSpec.mm in Sources */,
@@ -2593,7 +2576,6 @@
 				AEEE228511DC2D5200029872 /* SpecSpec2.m in Sources */,
 				E4BCFDD31817FA110083ED98 /* ObjectWithProperty.m in Sources */,
 				AEEE228711DC2D5800029872 /* main.m in Sources */,
-				AEEE228811DC2D5800029872 /* SlowSpec.m in Sources */,
 				AE807895183C71950078C608 /* SimpleKeyValueObserver.m in Sources */,
 				1F47B9A8186D69CD005A8CE1 /* CDROTestReporterSpec.mm in Sources */,
 				AE53B68117E7BCD300D83D5E /* CedarOrdinaryFakeSharedExamples.mm in Sources */,
@@ -2617,6 +2599,7 @@
 				44B9A71F1888661100CBCA1B /* ExampleWithPublicRunDates.m in Sources */,
 				AE18A80B13F4640600C8872C /* ContainSpec.mm in Sources */,
 				AED10EBD18F46C0E00950904 /* FooSuperclass.m in Sources */,
+				AE6FE27319D4871A00B40D37 /* CDRFunctionsSpec.mm in Sources */,
 				343FAFEB190FDAEC0085AFEC /* DeallocNotifier.m in Sources */,
 				AE6F3F351458D7C100C98F1E /* BeGreaterThanSpec.mm in Sources */,
 				34681C3118FE4B68009D38AC /* CDRTypeUtilitiesSpec.mm in Sources */,
