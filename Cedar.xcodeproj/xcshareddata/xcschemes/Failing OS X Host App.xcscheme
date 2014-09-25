@@ -20,6 +20,20 @@
                ReferencedContainer = "container:Cedar.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "AEA78B2119D4DC0800F5727F"
+               BuildableName = "Failing OS X Test Bundle.octest"
+               BlueprintName = "Failing OS X Test Bundle"
+               ReferencedContainer = "container:Cedar.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -33,7 +47,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "AEA78B2119D4DC0800F5727F"
-               BuildableName = "Failing OS X Test Bundle.xctest"
+               BuildableName = "Failing OS X Test Bundle.octest"
                BlueprintName = "Failing OS X Test Bundle"
                ReferencedContainer = "container:Cedar.xcodeproj">
             </BuildableReference>

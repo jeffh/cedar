@@ -875,7 +875,7 @@
 		AE9AA6D115AE082500617E1A /* StubbedMethod.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StubbedMethod.h; sourceTree = "<group>"; };
 		AE9AA6DA15AE0B0300617E1A /* CedarDoubleImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CedarDoubleImpl.h; sourceTree = "<group>"; };
 		AE9AA6DD15AE0BE200617E1A /* CedarDoubleImpl.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CedarDoubleImpl.mm; sourceTree = "<group>"; };
-		AEA78B2219D4DC0800F5727F /* Failing OS X Test Bundle.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Failing OS X Test Bundle.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AEA78B2219D4DC0800F5727F /* Failing OS X Test Bundle.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Failing OS X Test Bundle.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEA78B2719D4DC0800F5727F /* Failing OS X Test Bundle-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Failing OS X Test Bundle-Info.plist"; sourceTree = "<group>"; };
 		AEA78B2919D4DC0800F5727F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AEA78B2B19D4DC0800F5727F /* ExampleSpec.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ExampleSpec.mm; sourceTree = "<group>"; };
@@ -885,7 +885,7 @@
 		AEAB61A119D4D65700102260 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AEAB61A319D4D65700102260 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		AEAB61A419D4D65700102260 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		AEAB61C119D4D6DD00102260 /* OS X XCTest Bundle.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "OS X XCTest Bundle.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AEAB61C119D4D6DD00102260 /* OS X XCTest Bundle.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "OS X XCTest Bundle.xctest"; path = "OS X XCTest Bundle.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEAB61C419D4D6DD00102260 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AEAB61C519D4D6DD00102260 /* OS_X_XCTest_Bundle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OS_X_XCTest_Bundle.m; sourceTree = "<group>"; };
 		AEAB61CE19D4D7B700102260 /* CedarXCTestSupportSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CedarXCTestSupportSpec.mm; sourceTree = "<group>"; };
@@ -1586,7 +1586,7 @@
 				AE02E7E4184EABCD00414F19 /* iOSFrameworkSpecs.app */,
 				AEAB619D19D4D65700102260 /* OS X Host App.app */,
 				AEAB61C119D4D6DD00102260 /* OS X XCTest Bundle.xctest */,
-				AEA78B2219D4DC0800F5727F /* Failing OS X Test Bundle.xctest */,
+				AEA78B2219D4DC0800F5727F /* Failing OS X Test Bundle.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2093,7 +2093,7 @@
 			);
 			name = "Failing OS X Test Bundle";
 			productName = "Failing OS X Test Bundle";
-			productReference = AEA78B2219D4DC0800F5727F /* Failing OS X Test Bundle.xctest */;
+			productReference = AEA78B2219D4DC0800F5727F /* Failing OS X Test Bundle.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
 		AEAB619C19D4D65700102260 /* OS X Host App */ = {
@@ -3384,7 +3384,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
+				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
 		};
@@ -3422,7 +3422,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
+				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};
@@ -3948,6 +3948,7 @@
 				AEA78B3419D4DC0900F5727F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AEAB61BB19D4D65700102260 /* Build configuration list for PBXNativeTarget "OS X Host App" */ = {
 			isa = XCConfigurationList;
