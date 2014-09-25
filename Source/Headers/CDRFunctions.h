@@ -1,14 +1,9 @@
 #import <Foundation/Foundation.h>
 
-NSArray *CDRReportersFromEnv(const char*defaultReporterClassName);
+OBJC_EXPORT int CDRRunSpecs();
+OBJC_EXPORT void CDRInjectCedarIntoSenTestSuiteOrXCTestSuite();
+OBJC_EXPORT NSArray *CDRReportersFromEnv(const char *defaultReporterClassName);
 
-int CDRRunSpecs();
-OBJC_EXPORT void CDRInjectIntoXCTestRunner();
-int CDRRunSpecsWithCustomExampleReporters(NSArray *reporters);
-NSArray *CDRShuffleItemsInArrayWithSeed(NSArray *sortedItems, unsigned int seed);
-NSArray *CDRReportersToRun();
-NSString *CDRGetTestBundleExtension();
-
-int runSpecs() __attribute__((deprecated("Please use CDRRunSpecs()")));
-int runAllSpecs() __attribute__((deprecated("Please use CDRRunSpecs()")));
-int runSpecsWithCustomExampleReporters(NSArray *reporters) __attribute__((deprecated("Please use CDRRunSpecsWithCustomExampleReporters()")));
+OBJC_EXPORT int runSpecs() __attribute__((deprecated("Please use CDRRunSpecs()")));
+OBJC_EXPORT int runAllSpecs() __attribute__((deprecated("Please use CDRRunSpecs()")));
+OBJC_EXPORT int runSpecsWithCustomExampleReporters(NSArray *reporters) __attribute__((deprecated("Please use CDRRunSpecsWithCustomExampleReporters()")));

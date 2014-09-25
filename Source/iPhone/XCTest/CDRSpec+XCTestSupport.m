@@ -38,7 +38,7 @@ const char *CDRXSpecKey;
 
 - (id)testSuiteWithRandomSeed:(unsigned int)seed dispatcher:(CDRReportDispatcher *)dispatcher {
     NSString *className = NSStringFromClass([self class]);
-    Class testSuiteClass = NSClassFromString(@"XCTestSuite") ?: NSClassFromString(@"SenTestSuite");
+    Class testSuiteClass = CDRGetFirstClassThatExists(@[@"XCTestSuite", @"SenTestSuite"]);
     id testSuite = [(id)testSuiteClass testSuiteWithName:className];
     Class newXCTestSubclass = [self createTestCaseSubclass];
 
@@ -82,7 +82,7 @@ const char *CDRXSpecKey;
 
 - (Class)createTestCaseSubclass {
     NSString *className = NSStringFromClass([self class]);
-    Class testCaseClass = NSClassFromString(@"XCTestCase") ?: NSClassFromString(@"SenTestCase");
+    Class testCaseClass = CDRGetFirstClassThatExists(@[@"XCTestCase", @"SenTestCase"]);
     NSString *newClassName = [NSString stringWithFormat:@"_%@", className];
     Class newXCTestSubclass = NSClassFromString(newClassName);
     if (!newXCTestSubclass) {

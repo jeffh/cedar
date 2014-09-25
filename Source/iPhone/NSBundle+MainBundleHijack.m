@@ -4,6 +4,7 @@
 #import "HeadlessSimulatorWorkaround.h"
 #import "CDRFunctions.h"
 #import <objc/runtime.h>
+#import "CDRRuntimeUtilities.h"
 
 
 @implementation NSBundle (MainBundleHijack)
@@ -16,19 +17,18 @@ NSBundle *CDRMainBundle(id self, SEL _cmd) {
 + (void)load {
     suppressStandardPipesWhileLoadingClasses();
 
-    NSString *extension = CDRGetTestBundleExtension();
-
-    if (!extension) {
+    NSString *testBundleExtension = CDRGetTestBundleExtension();
+    if (!testBundleExtension) {
         return;
     }
 
     BOOL mainBundleIsApp = [[[NSBundle mainBundle] bundlePath] hasSuffix:@".app"];
-    BOOL mainBundleIsTestBundle = [[[NSBundle mainBundle] bundlePath] hasSuffix:extension];
+    BOOL mainBundleIsTestBundle = [[[NSBundle mainBundle] bundlePath] hasSuffix:testBundleExtension];
 
     if (!mainBundleIsApp && !mainBundleIsTestBundle) {
         NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
         for (NSBundle *bundle in [NSBundle allBundles]) {
-            if ([[bundle bundlePath] hasSuffix:extension]) {
+            if ([[bundle bundlePath] hasSuffix:testBundleExtension]) {
                 mainBundle__ = [bundle retain];
                 Class nsBundleMetaClass = objc_getMetaClass("NSBundle");
                 class_replaceMethod(nsBundleMetaClass, @selector(mainBundle), (IMP)CDRMainBundle, "v@:");

@@ -8,6 +8,8 @@
 #import "CDRFunctions.h"
 #import "CDRReportDispatcher.h"
 #import "CDROTestNamer.h"
+#import "CDRXTestSuite.h"
+#import "CDRRuntimeUtilities.h"
 
 static NSString * const CDRBuildVersionKey = @"CDRBuildVersionSHA";
 
@@ -99,46 +101,6 @@ void CDRDefineGlobalBeforeAndAfterEachBlocks() {
     [CDRSpecHelper specHelper].globalAfterEachClasses = CDRSelectClasses(^BOOL(Class class) {
         return CDRClassHasClassMethod(class, @selector(afterEach));
     });
-}
-
-#pragma mark - Reporters
-
-NSArray *CDRReporterClassesFromEnv(const char *defaultReporterClassName) {
-    const char *reporterClassNamesCsv = getenv("CEDAR_REPORTER_CLASS");
-    if (!reporterClassNamesCsv) {
-        reporterClassNamesCsv = defaultReporterClassName;
-    }
-
-    NSString *objCClassNames = [NSString stringWithUTF8String:reporterClassNamesCsv];
-    NSArray *reporterClassNames = [objCClassNames componentsSeparatedByString:@","];
-
-    NSMutableArray *reporterClasses = [NSMutableArray arrayWithCapacity:[reporterClassNames count]];
-    for (NSString *reporterClassName in reporterClassNames) {
-        Class reporterClass = [NSClassFromString(reporterClassName) retain];
-        if (!reporterClass) {
-            printf("***** The specified reporter class \"%s\" does not exist. *****\n", [reporterClassName cStringUsingEncoding:NSUTF8StringEncoding]);
-            return nil;
-        }
-        [reporterClasses addObject:reporterClass];
-        [reporterClass release];
-    }
-    return reporterClasses;
-}
-
-NSArray *CDRReportersFromEnv(const char *defaultReporterClassName) {
-    NSArray *reporterClasses = CDRReporterClassesFromEnv(defaultReporterClassName);
-
-    NSMutableArray *reporters = [NSMutableArray arrayWithCapacity:reporterClasses.count];
-    for (Class reporterClass in reporterClasses) {
-        id<CDRExampleReporter> reporter = nil;
-        if ([reporterClass instancesRespondToSelector:@selector(initWithCedarVersion:)]) {
-            reporter = [[[reporterClass alloc] initWithCedarVersion:CDRVersionString()] autorelease];
-        } else {
-            reporter = [[[reporterClass alloc] init] autorelease];
-        }
-        [reporters addObject:reporter];
-    }
-    return reporters;
 }
 
 #pragma mark - Spec running
@@ -265,16 +227,7 @@ NSArray *CDRRootGroupsFromSpecs(NSArray *specs) {
     return groups;
 }
 
-NSArray *CDRShuffleItemsInArrayWithSeed(NSArray *sortedItems, unsigned int seed) {
-    NSMutableArray *shuffledItems = [sortedItems mutableCopy];
-    srand(seed);
-
-    for (int i=0; i < shuffledItems.count; i++) {
-        NSUInteger idx = rand() % shuffledItems.count;
-        [shuffledItems exchangeObjectAtIndex:i withObjectAtIndex:idx];
-    }
-    return [shuffledItems autorelease];
-}
+#pragma mark - Example randomization
 
 NSArray *CDRPermuteSpecClassesWithSeed(NSArray *unsortedSpecClasses, unsigned int seed) {
     NSMutableArray *sortedSpecClasses = unsortedSpecClasses.mutableCopy;
@@ -294,6 +247,7 @@ unsigned int CDRGetRandomSeed() {
     return seed;
 }
 
+#pragma mark - Reporters
 void __attribute__((weak)) __gcov_flush(void) {
 }
 
@@ -328,6 +282,28 @@ int CDRRunSpecsWithCustomExampleReporters(NSArray *reporters) {
     }
 }
 
+NSArray *CDRReporterClassesFromEnv(const char *defaultReporterClassName) {
+    const char *reporterClassNamesCsv = getenv("CEDAR_REPORTER_CLASS");
+    if (!reporterClassNamesCsv) {
+        reporterClassNamesCsv = defaultReporterClassName;
+    }
+
+    NSString *objCClassNames = [NSString stringWithUTF8String:reporterClassNamesCsv];
+    NSArray *reporterClassNames = [objCClassNames componentsSeparatedByString:@","];
+
+    NSMutableArray *reporterClasses = [NSMutableArray arrayWithCapacity:[reporterClassNames count]];
+    for (NSString *reporterClassName in reporterClassNames) {
+        Class reporterClass = [NSClassFromString(reporterClassName) retain];
+        if (!reporterClass) {
+            printf("***** The specified reporter class \"%s\" does not exist. *****\n", [reporterClassName cStringUsingEncoding:NSUTF8StringEncoding]);
+            return nil;
+        }
+        [reporterClasses addObject:reporterClass];
+        [reporterClass release];
+    }
+    return reporterClasses;
+}
+
 NSArray *CDRReportersToRun() {
     const char *defaultReporterClassName = "CDRDefaultReporter";
     BOOL isTestBundle = objc_getClass("SenTestProbe") || objc_getClass("XCTestProbe");
@@ -337,6 +313,8 @@ NSArray *CDRReportersToRun() {
     }
     return CDRReportersFromEnv(defaultReporterClassName);
 }
+
+#pragma mark - Public
 
 int CDRRunSpecs() {
     @autoreleasepool {
@@ -349,27 +327,36 @@ int CDRRunSpecs() {
     }
 }
 
+NSArray *CDRReportersFromEnv(const char *defaultReporterClassName) {
+    NSArray *reporterClasses = CDRReporterClassesFromEnv(defaultReporterClassName);
+
+    NSMutableArray *reporters = [NSMutableArray arrayWithCapacity:reporterClasses.count];
+    for (Class reporterClass in reporterClasses) {
+        id<CDRExampleReporter> reporter = nil;
+        if ([reporterClass instancesRespondToSelector:@selector(initWithCedarVersion:)]) {
+            reporter = [[[reporterClass alloc] initWithCedarVersion:CDRVersionString()] autorelease];
+        } else {
+            reporter = [[[reporterClass alloc] init] autorelease];
+        }
+        [reporters addObject:reporter];
+    }
+    return reporters;
+}
+
 #pragma mark - Running Test Bundles
-#import "CDRXTestSuite.h"
-#import "CDRRuntimeUtilities.h"
 
 @interface CDRXCTestSupport : NSObject
 - (id)testSuiteWithName:(NSString *)name;
 - (id)defaultTestSuite;
-- (id)testSuiteForBundlePath:(NSString *)bundlePath;
-- (id)testSuiteForTestCaseWithName:(NSString *)name;
-- (id)testSuiteForTestCaseClass:(Class)testCaseClass;
 - (id)initWithName:(NSString *)aName;
 
 - (id)CDR_original_defaultTestSuite;
 
 - (void)addTest:(id)test;
-
-- (id)initWithInvocation:(NSInvocation *)invocation;
 @end
 
 static id CDRCreateXCTestSuite() {
-    Class testSuiteClass = NSClassFromString(@"XCTestSuite") ?: NSClassFromString(@"SenTestSuite");
+    Class testSuiteClass = CDRGetFirstClassThatExists(@[@"XCTestSuite", @"SenTestSuite"]);
     Class testSuiteSubclass = NSClassFromString(@"_CDRXTestSuite");
 
     if (testSuiteSubclass == nil) {
@@ -404,8 +391,12 @@ static id CDRCreateXCTestSuite() {
     return testSuite;
 }
 
-void CDRInjectIntoXCTestRunner() {
-    Class testSuiteClass = NSClassFromString(@"XCTestSuite") ?: NSClassFromString(@"SenTestSuite");
+void CDRInjectCedarIntoSenTestSuiteOrXCTestSuite() {
+    Class testSuiteClass = CDRGetFirstClassThatExists(@[@"XCTestSuite", @"SenTestSuite"]);
+
+    if (!CDRGetTestBundleExtension()) {
+        return; // we're not in a test bundle
+    }
 
     if (!testSuiteClass) {
         [[NSException exceptionWithName:@"CedarNoTestFrameworkAvailable" reason:@"You must link against either XCTest or SenTestingKit frameworks." userInfo:nil] raise];
@@ -420,26 +411,6 @@ void CDRInjectIntoXCTestRunner() {
         return defaultSuite;
     });
     class_replaceMethod(testSuiteMetaClass, @selector(defaultTestSuite), newImp, method_getTypeEncoding(m));
-}
-
-
-static bool CDRIsXCTest() {
-    return objc_getClass("XCTestProbe");
-}
-static bool CDRIsOCTest() {
-    return objc_getClass("SenTestProbe");
-}
-
-NSString *CDRGetTestBundleExtension() {
-    NSString *extension = nil;;
-
-    if (CDRIsXCTest()) {
-        extension = @".xctest";
-    } else if (CDRIsOCTest()) {
-        extension = @".octest";
-    }
-
-    return extension;
 }
 
 #pragma mark - Deprecated

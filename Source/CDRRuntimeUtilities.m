@@ -1,6 +1,8 @@
 #import "CDRRuntimeUtilities.h"
+#import "CDRExampleReporter.h"
 #import <objc/runtime.h>
 
+#pragma mark - Class Mixins
 
 static void CDRCopyProtocolsFromClass(Class sourceClass, Class destinationClass) {
     unsigned int count = 0;
@@ -74,5 +76,41 @@ void CDRCopyClassInternalsFromClass(Class sourceClass, Class destinationClass) {
     CDRCopyInstanceVariablesFromClass(sourceClass, destinationClass);
     CDRCopyInstanceMethodsFromClass(sourceClass, destinationClass);
     CDRCopyClassMethodsFromClass(sourceClass, destinationClass);
+}
+
+Class CDRGetFirstClassThatExists(NSArray *classNames) {
+    Class aClass = nil;
+    for (NSString *className in classNames) {
+        aClass = NSClassFromString(className);
+        if (aClass) {
+            break;
+        }
+    }
+    return aClass;
+}
+
+#pragma mark - Test Bundles
+
+NSString *CDRGetTestBundleExtension() {
+    NSArray *arguments = [[NSProcessInfo processInfo] arguments];
+    if ([arguments containsObject:@"-XCTest"]) {
+        return @".xctest";
+    } else if ([arguments containsObject:@"-SenTest"]) {
+        return @".octest";
+    }
+    return nil;
+}
+
+#pragma mark - Randomization helpers
+
+NSArray *CDRShuffleItemsInArrayWithSeed(NSArray *sortedItems, unsigned int seed) {
+    NSMutableArray *shuffledItems = [sortedItems mutableCopy];
+    srand(seed);
+
+    for (int i=0; i < shuffledItems.count; i++) {
+        NSUInteger idx = rand() % shuffledItems.count;
+        [shuffledItems exchangeObjectAtIndex:i withObjectAtIndex:idx];
+    }
+    return [shuffledItems autorelease];
 }
 

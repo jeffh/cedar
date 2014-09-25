@@ -19,4 +19,7 @@
 - (void)runWillStartSpec:(CDRSpec *)spec;
 - (void)runDidFinishSpec:(CDRSpec *)spec;
 
+@optional
+- (instancetype)initWithCedarVersion:(NSString *)cedarVersionString;
+
 @end

@@ -1,6 +1,7 @@
 #import "CDROTestRunner.h"
 #import "CDROTestHelper.h"
 #import "CDRFunctions.h"
+#import "CDRRuntimeUtilities.h"
 
 @interface CDROTestRunner ()
 @property (nonatomic) int exitStatus;
@@ -9,10 +10,7 @@
 @implementation CDROTestRunner
 
 + (void)load {
-    if (!CDRGetTestBundleExtension()) {
-        return; // we're not in a test bundle
-    }
-   CDRInjectIntoXCTestRunner();
+    CDRInjectCedarIntoSenTestSuiteOrXCTestSuite();
 }
 
 @end
