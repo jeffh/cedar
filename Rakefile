@@ -25,8 +25,9 @@ XCODE_SNIPPETS_DIR = "#{ENV['HOME']}/Library/Developer/Xcode/UserData/CodeSnippe
 APPCODE_SNIPPETS_DIR = "#{ENV['HOME']}/Library/Preferences/appCode20/templates"
 XCODE_PLUGINS_DIR = "#{ENV['HOME']}/Library/Application Support/Developer/Shared/Xcode/Plug-ins/"
 
-SDK_VERSION = ENV["CEDAR_SDK_VERSION"] || "7.1"
-SDK_RUNTIME_VERSION = ENV["CEDAR_SDK_RUNTIME_VERSION"] || "7.1"
+LATEST_SDK_VERSION = `xcodebuild -showsdks | grep iphonesimulator | cut -d ' ' -f 4`.chomp.split("\n").last
+SDK_VERSION = ENV["CEDAR_SDK_VERSION"] || LATEST_SDK_VERSION
+SDK_RUNTIME_VERSION = ENV["CEDAR_SDK_RUNTIME_VERSION"] || LATEST_SDK_VERSION
 
 PROJECT_ROOT = File.dirname(__FILE__)
 BUILD_DIR = File.join(PROJECT_ROOT, "build")
@@ -407,7 +408,7 @@ namespace :testbundles do
       Xcode.test(
         scheme: XCUNIT_APPLICATION_SPECS_TARGET_NAME,
         sdk: "iphonesimulator#{SDK_VERSION}",
-        args: "ARCHS=i386 -destination '#{Xcode.destination_for_ios_sdk(SDK_RUNTIME_VERSION)}' -destination-timeout 9",
+        args: "ARCHS=x86_64 -destination '#{Xcode.destination_for_ios_sdk(SDK_RUNTIME_VERSION)}' -destination-timeout 9",
         logfile: "xcunit.run.log",
       )
     else
