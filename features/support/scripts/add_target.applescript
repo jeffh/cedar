@@ -35,6 +35,11 @@ on run argv
             end if
         end repeat
 
+        repeat until (exists sheet 1 of projectWindow)
+        end repeat
+        repeat until (exists scroll area 1 of sheet 1 of projectWindow)
+        end repeat
+
         -- pick the template from the sheet
         set focused of scroll area 1 of sheet 1 of projectWindow to true
         keystroke template_category_name
