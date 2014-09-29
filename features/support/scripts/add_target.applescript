@@ -25,6 +25,7 @@ on run argv
         keystroke "new target"
         delay 2
         key code 125
+        delay 1
         keystroke return
 
         set projectWindow to "UNKNOWN"
