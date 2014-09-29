@@ -23,7 +23,7 @@ on run argv
         keystroke "?" using command down
         delay 1
         keystroke "new target"
-        delay 1
+        delay 2
         key code 125
         keystroke return
 
