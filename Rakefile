@@ -227,9 +227,9 @@ class Simulator
   end
 
   def self.kill
-    system %Q[killall -m -KILL "gdb"]
-    system %Q[killall -m -KILL "otest"]
-    system %Q[killall -m -KILL "iPhone Simulator"]
+    system %Q[killall -m -KILL "gdb" 2>&1 > /dev/null]
+    system %Q[killall -m -KILL "otest" 2>&1 > /dev/null]
+    system %Q[killall -m -KILL "iPhone Simulator" 2>&1 > /dev/null]
   end
 end
 
