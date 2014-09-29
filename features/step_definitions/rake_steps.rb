@@ -19,7 +19,6 @@ end
 Then(/^I should see an error telling me to install ios-sim since I do not have it installed/) do
   path_to_ios_sim = File.dirname(`which ios-sim`.chomp)
   path_without_ios_sim = (ENV['PATH'].split(':') - [path_to_ios_sim]).join(":")
-  puts "PATH=#{path_without_ios_sim.inspect}"
 
   out = ""
   Dir.chdir('template-project/Specs') do
