@@ -109,18 +109,6 @@
         <key>BuildPhases</key>
         <array>
           <dict>
-            <key>Class</key>
-            <string>Sources</string>
-          </dict>
-          <dict>
-            <key>Class</key>
-            <string>Frameworks</string>
-          </dict>
-          <dict>
-            <key>Class</key>
-            <string>Resources</string>
-          </dict>
-          <dict>
             <key>ShellScript</key>
             <string>cp -R &quot;${TARGET_NAME}&quot;/Frameworks/Cedar.framework &quot;${BUILT_PRODUCTS_DIR}&quot;</string>
             <key>ShellPath</key>
