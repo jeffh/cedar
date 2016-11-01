@@ -374,7 +374,9 @@ NSString *CDRGetTestBundleExtension() {
     NSString *extension = nil;;
     NSArray *arguments = [[NSProcessInfo processInfo] arguments];
     NSSet *xctestFlags = [NSSet setWithArray:@[@"-XCTest", @"-XCTestScopeFile"]];
-    if ([xctestFlags intersectsSet:[NSSet setWithArray:arguments]]) {
+    if ([arguments.firstObject hasSuffix:@"/xctest"]) {
+        extension = @".xctest";
+    } else if ([xctestFlags intersectsSet:[NSSet setWithArray:arguments]]) {
         extension = @".xctest";
     } else if ([arguments containsObject:@"-SenTest"]) {
         extension = @".octest";
