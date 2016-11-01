@@ -3314,6 +3314,7 @@
 				ORGANIZATIONNAME = Pivotal;
 				TargetAttributes = {
 					1F45A3C8180E4796003C1E36 = {
+						LastSwiftMigration = 0810;
 						TestTargetID = 96B5F9F5144A81A7000A6A5D;
 					};
 					346261DE1B995239002CAEBD = {
@@ -3331,6 +3332,9 @@
 					34D7C4681BB9B71600E8E523 = {
 						CreatedOnToolsVersion = 7.1;
 					};
+					96B5F9F5144A81A7000A6A5D = {
+						LastSwiftMigration = 0810;
+					};
 					AE03FBE81B06C33B00013784 = {
 						CreatedOnToolsVersion = 6.3.1;
 					};
@@ -3344,6 +3348,10 @@
 					};
 					AE4864F71B067620005DB302 = {
 						CreatedOnToolsVersion = 6.3.1;
+						LastSwiftMigration = 0810;
+					};
+					AEEE222811DC2B0600029872 = {
+						LastSwiftMigration = 0810;
 					};
 				};
 			};
@@ -4441,6 +4449,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.pivotallabs.cedar.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cedar-iOS HostApp.app/Cedar-iOS HostApp";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -4474,6 +4483,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.pivotallabs.cedar.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cedar-iOS HostApp.app/Cedar-iOS HostApp";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -4933,6 +4943,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "io.pivotal.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SWIFT_VERSION = 3.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -4950,6 +4961,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "io.pivotal.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SWIFT_VERSION = 3.0;
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
@@ -5296,6 +5308,7 @@
 				PRODUCT_NAME = Cedar;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = NO;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -5342,6 +5355,7 @@
 				PRODUCT_NAME = Cedar;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -5570,6 +5584,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				PRODUCT_NAME = Cedar;
 				SDKROOT = iphoneos;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -5585,6 +5600,7 @@
 				);
 				PRODUCT_NAME = Cedar;
 				SDKROOT = iphoneos;
+				SWIFT_VERSION = 3.0;
 				ZERO_LINK = NO;
 			};
 			name = Release;
